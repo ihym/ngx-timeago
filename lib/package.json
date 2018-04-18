@@ -1,0 +1,38 @@
+{
+  "name": "ngx-timeago",
+  "description": "A simple Time Ago module for Angular",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihym/ngx-timeago.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ihym/ngx-timeago/issues"
+  },
+  "author": "Vasilis Diakomanolis <b.diakomanolis@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular2",
+    "timeago",
+    "ngx-timeago"
+  ],
+  "peerDependencies": {
+    "@angular/core": ">=6.0.0-rc.0",
+    "rxjs": ">=6.0.0-beta.1"
+  },
+  "devDependencies": {
+    "semantic-release": "8.2.3"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "workingDirectory": "../.ng_build",
+    "keepLifecycleScripts": true,    
+    "lib": {
+      "entryFile": "src/public_api.ts"
+    },
+    "dest": "../dist/ngx-timeago"
+  }
+}

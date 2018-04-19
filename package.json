@@ -6,7 +6,6 @@
     "build": "ng build",
     "build:demo": "cpr dist/ngx-timeago demo/ngx-timeago && ng build --app packages && rimraf demo/ngx-timeago",
     "build:lib": "rimraf dist && ng-packagr -p lib/package.json",
-    "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",

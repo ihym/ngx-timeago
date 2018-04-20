@@ -1,0 +1,22 @@
+import {IL10nsStrings} from '../timeago.intl';
+
+const strings: IL10nsStrings = {
+  prefixAgo: null,
+  prefixFromNow: null,
+  suffixAgo: '',
+  suffixFromNow: '',
+  seconds: 's',
+  minute: '1m',
+  minutes: '%dm',
+  hour: '1h',
+  hours: '%dh',
+  day: '1T.',
+  days: '%dT.',
+  month: '1Mt.',
+  months: '%dMt.',
+  year: '1J.',
+  years: '%dJ.',
+  wordSeparator: ' ',
+};
+
+export default strings;

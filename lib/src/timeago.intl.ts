@@ -1,4 +1,4 @@
-import {Injectable, SkipSelf, Optional, InjectionToken, Inject} from '@angular/core';
+import {Injectable, InjectionToken, Inject} from '@angular/core';
 import {Subject} from 'rxjs';
 import {StringOrFn, NumberArray} from './timeago.formatter';
 import {TimeagoStore} from './timeago.store';

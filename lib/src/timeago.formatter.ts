@@ -1,4 +1,4 @@
-import {Injectable, SkipSelf, Optional} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TimeagoIntl} from './timeago.intl';
 
 type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';

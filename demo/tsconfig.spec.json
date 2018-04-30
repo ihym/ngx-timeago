@@ -5,12 +5,25 @@
     "module": "commonjs",
     "target": "es5",
     "baseUrl": "",
-    "types": ["jasmine", "node"],
+    "types": [
+      "jasmine",
+      "node"
+    ],
     "paths": {
-      "ngx-timeago": ["../dist/ngx-timeago"]
+      "ngx-timeago": [
+        "../dist/ngx-timeago"
+      ]
     }
   },
-  "files": ["test.ts"],
-  "include": ["../lib/**/*.ts"],
-  "exclude": ["node_modules", "tmp"]
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "../lib/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

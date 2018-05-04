@@ -1,12 +1,13 @@
 import {NgModule, ModuleWithProviders, Provider} from '@angular/core';
-import {TimeagoService} from './timeago.service';
-import {TimeagoIntl} from './timeago.intl';
 import {TimeagoDirective} from './timeago.directive';
+import {TimeagoIntl} from './timeago.intl';
+import {TimeagoClock, TimeagoDefaultClock} from './timeago.clock';
 import {TimeagoFormatter, TimeagoDefaultFormatter} from './timeago.formatter';
 
 export interface TimeagoModuleConfig {
-  formatter?: Provider;
+  clock?: Provider;
   intl?: Provider;
+  formatter?: Provider;
 }
 
 @NgModule({
@@ -25,9 +26,9 @@ export class TimeagoModule {
     return {
       ngModule: TimeagoModule,
       providers: [
+        config.clock || {provide: TimeagoClock, useClass: TimeagoDefaultClock},
+        config.intl || [],
         config.formatter || {provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter},
-        config.intl,
-        TimeagoService,
       ],
     };
   }
@@ -39,9 +40,9 @@ export class TimeagoModule {
     return {
       ngModule: TimeagoModule,
       providers: [
+        config.clock || {provide: TimeagoClock, useClass: TimeagoDefaultClock},
+        config.intl || [],
         config.formatter || {provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter},
-        config.intl,
-        TimeagoService,
       ],
     };
   }

@@ -1,11 +1,10 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "dev": {
       "root": "",
-      "sourceRoot": "demo",
       "projectType": "application",
       "architect": {
         "build": {
@@ -17,8 +16,16 @@
             "tsConfig": "demo/tsconfig.app.json",
             "polyfills": "demo/polyfills.ts",
             "assets": [
-              "demo/assets",
-              "demo/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "demo/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "demo",
+                "output": "/"
+              }
             ],
             "styles": [
               "demo/styles.css"
@@ -74,8 +81,16 @@
               "demo/styles.css"
             ],
             "assets": [
-              "demo/assets",
-              "demo/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "demo/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "demo",
+                "output": "/"
+              }
             ]
           }
         },
@@ -93,14 +108,30 @@
     },
     "dev-e2e": {
       "root": "",
-      "sourceRoot": "",
       "projectType": "application",
       "cli": {},
-      "schematics": {}
+      "schematics": {},
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "dev:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
     },
     "packages": {
       "root": "",
-      "sourceRoot": "demo",
       "projectType": "application",
       "architect": {
         "build": {
@@ -112,8 +143,16 @@
             "tsConfig": "demo/tsconfig.packages.json",
             "polyfills": "demo/polyfills.ts",
             "assets": [
-              "demo/assets",
-              "demo/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "demo/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "demo",
+                "output": "/"
+              }
             ],
             "styles": [
               "demo/styles.css"
@@ -169,8 +208,16 @@
               "demo/styles.css"
             ],
             "assets": [
-              "demo/assets",
-              "demo/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "demo/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "demo",
+                "output": "/"
+              }
             ]
           }
         },
@@ -188,17 +235,29 @@
     },
     "packages-e2e": {
       "root": "",
-      "sourceRoot": "",
       "projectType": "application",
       "cli": {},
-      "schematics": {}
+      "schematics": {},
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "packages:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
     }
   },
   "cli": {},
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "css"
-    },
-    "@schematics/angular:directive": {}
-  }
+  "schematics": {}
 }

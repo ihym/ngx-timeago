@@ -2,7 +2,7 @@ import {IL10nsStrings} from '../timeago.intl';
 
 const strings: IL10nsStrings = {
   prefixAgo: null,
-  refixFromNow: null,
+  prefixFromNow: null,
   suffixAgo: '전',
   suffixFromNow: '후',
   seconds: '방금',

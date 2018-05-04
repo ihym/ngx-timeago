@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "angularCompilerOptions": {
     "paths": {
-      "ngx-timeago": [ "../lib/src/public_api.ts" ]
+      "ngx-timeago": [ "../lib/src/public_api.ts" ],
+      "ngx-timeago/*": [ "../lib/src/*" ]
     }
   },
   "compilerOptions": {
@@ -11,7 +12,8 @@
     "baseUrl": "",
     "types": [],
     "paths": {
-      "ngx-timeago": [ "../lib/src/public_api.ts" ]
+      "ngx-timeago": [ "../lib/src/public_api.ts" ],
+      "ngx-timeago/*": [ "../lib/src/*" ]
     }
   },
   "exclude": [

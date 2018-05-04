@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "angularCompilerOptions": {
     "paths": {
-      "ngx-timeago": [ "../dist/ngx-timeago" ]
+      "ngx-timeago": [ "../dist/ngx-timeago" ],
+      "ngx-timeago/*": [ "../dist/ngx-timeago/*" ]
     }
   },
   "compilerOptions": {
@@ -11,7 +12,8 @@
     "baseUrl": "",
     "types": [],
     "paths": {
-      "ngx-timeago": [ "../dist/ngx-timeago" ]
+      "ngx-timeago": [ "../dist/ngx-timeago" ],
+      "ngx-timeago/*": [ "../dist/ngx-timeago/*" ]
     }
   },
   "exclude": [

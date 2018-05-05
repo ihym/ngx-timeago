@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, interval } from 'rxjs';
 import { startWith } from 'rxjs/operators';
-import { TimeagoModule, TimeagoClock, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
+import { TimeagoModule } from 'ngx-timeago';
 
 import { ChildComponent } from './child.component';
 import { FooComponent } from './foo/foo.component';

@@ -1,4 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TimeagoIntl } from 'ngx-timeago';
+import englishStrings from 'ngx-timeago/language-strings/en';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +18,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 export class AppComponent {
   now = Date.now();
   dates = Array.from(new Array(20), (val, index) => ({date: this.now - index * 10000, live: true, suffix: true}));
+
+  constructor(intl: TimeagoIntl) {
+    Object.assign(intl, englishStrings);
+    intl.changes.next();
+  }
 }

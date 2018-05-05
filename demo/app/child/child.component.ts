@@ -1,9 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import englishStrings from 'ngx-timeago/language-strings/en';
-
-console.log(englishStrings);
-
 @Component({
   selector: 'app-child',
   template: `

@@ -2,18 +2,17 @@ import {
   Directive,
   Input,
   ElementRef,
-  ChangeDetectorRef,
   Optional,
   SimpleChanges,
   OnChanges,
   OnDestroy
 } from '@angular/core';
-import {Subscription, Subject} from 'rxjs';
-import {filter} from 'rxjs/operators';
-import {TimeagoClock} from './timeago.clock';
-import {TimeagoFormatter} from './timeago.formatter';
-import {TimeagoIntl} from './timeago.intl';
-import {isDefined, coerceBooleanProperty, dateParser} from './util';
+import { Subscription, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { TimeagoClock } from './timeago.clock';
+import { TimeagoFormatter } from './timeago.formatter';
+import { TimeagoIntl } from './timeago.intl';
+import { isDefined, coerceBooleanProperty, dateParser } from './util';
 
 export type IDate = string | number | Date;
 
@@ -66,24 +65,19 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   private _suffix = true;
 
   constructor(@Optional() intl: TimeagoIntl,
-              private clock: TimeagoClock,
-              private formatter: TimeagoFormatter,
-              private element: ElementRef,
-              private changeDetectorRef: ChangeDetectorRef) {
+              formatter: TimeagoFormatter,
+              element: ElementRef,
+              private clock: TimeagoClock) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(this.stateChanges);
     }
-    this.stateChanges.subscribe(() => this.setContent(this.element.nativeElement, this.formatter.parse(this.date, this.suffix)));
+    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.parse(this.date, this.suffix)));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.live) {
-      if (changes.live.currentValue && !changes.live.previousValue) {
-        this.stateChanges.next();
-      }
-    }
+    const change = changes.live || changes.suffix;
 
-    if (changes.suffix) {
+    if (change && !change.firstChange) {
       this.stateChanges.next();
     }
   }

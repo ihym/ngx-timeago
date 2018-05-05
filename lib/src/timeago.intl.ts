@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
-import {StringOrFn, NumberArray} from './timeago.formatter';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { StringOrFn, NumberArray } from './timeago.formatter';
 
 export interface IL10nsStrings {
   prefixAgo?: StringOrFn;

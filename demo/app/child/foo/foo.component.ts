@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-foo',
   template: `
     <h2> OnPush Component </h2>
-    <div timeago [date]="date"></div>
+    <div timeago [date]="date" suffix="true"></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

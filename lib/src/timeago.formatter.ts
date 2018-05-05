@@ -16,9 +16,7 @@ export abstract class TimeagoFormatter {
   parse(then: number, hasSuffix: boolean): string {
     const now = Date.now();
     const seconds = Math.round(Math.abs(now - then) / 1000);
-    const suffix = hasSuffix
-      ? then < now ? 'ago' : 'from now'
-      : '';
+    const suffix = hasSuffix ? then < now ? 'ago' : 'from now' : '';
 
     const [value, unit] =
       seconds < MINUTE

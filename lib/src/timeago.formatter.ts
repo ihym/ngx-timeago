@@ -1,6 +1,6 @@
-import {Injectable, Optional} from '@angular/core';
-import {TimeagoIntl} from './timeago.intl';
-import {MINUTE, HOUR, DAY, WEEK, MONTH, YEAR} from './util';
+import { Injectable, Optional } from '@angular/core';
+import { TimeagoIntl } from './timeago.intl';
+import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 
 export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 

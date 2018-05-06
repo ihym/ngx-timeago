@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, empty } from 'rxjs';
 import { expand, delay } from 'rxjs/operators';
-import { dateParser, MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
+import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 
 export abstract class TimeagoClock {
   abstract register(then: number): Observable<any>;

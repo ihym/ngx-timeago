@@ -1,6 +1,6 @@
 {
   "name": "ngx-timeago",
-  "description": "A simple Time Ago module for Angular",
+  "description": "Live updating timestamps in Angular 6+. Lightweight, extensible, robust.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ihym/ngx-timeago.git"

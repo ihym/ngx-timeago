@@ -23,6 +23,12 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   private intlSubscription: Subscription;
   private clockSubscription: Subscription;
 
+  /**
+   * Emits on:
+   * - Input change
+   * - Intl change
+   * - Clock tick
+  */
   stateChanges = new Subject<any>();
 
   /** The Date to display. An actual Date object or something that can be fed to new Date. */
@@ -37,8 +43,8 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
         this.clockSubscription.unsubscribe();
       }
       this.clockSubscription = this.clock.register(date)
-        .pipe(filter((value, index) => !index || this.live, this))
-        .subscribe(this.stateChanges);
+        .pipe(filter(() => this.live, this))
+        .subscribe(() => this.stateChanges.next());
     } else {
       console.warn('[ngx-timeago] Invalid Date provided');
     }
@@ -69,17 +75,13 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
               element: ElementRef,
               private clock: TimeagoClock) {
     if (intl) {
-      this.intlSubscription = intl.changes.subscribe(this.stateChanges);
+      this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
     this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.parse(this.date, this.suffix)));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const change = changes.live || changes.suffix;
-
-    if (change && !change.firstChange) {
-      this.stateChanges.next();
-    }
+    this.stateChanges.next();
   }
 
   setContent(node: any, content: string): void {

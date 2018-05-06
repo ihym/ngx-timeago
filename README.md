@@ -131,7 +131,7 @@ import englishStrings from 'ngx-timeago/language-strings/en';
 @Component({
   selector: 'app',
   template: `
-    <div timeago [date]="myDate"></div>
+    <div timeago [date]="2671200000"></div>
   `
 })
 export class AppComponent {
@@ -149,7 +149,7 @@ You can also customize the language strings or provide your own. Combined with t
 
 This is how you use the **directive**:
 ```html
-<div timeago [date]="myDate" [live]="isLive" [suffix]="hasSuffix"></div>
+<div timeago [date]="2671200000" [live]="true" [suffix]="true"></div>
 ```
 
 ## API
@@ -181,11 +181,12 @@ The only required method to build your own clock, is `register` that must return
 
 ```ts
 import { TimeagoClock } from 'ngx-timeago';
+import { Observable, interval } from 'rxjs';
 
 // ticks every 2s
 export class MyClock extends TimeagoClock {
   register(then: number): Observable<number> {
-    return interval(2000).pipe(startWith(0));
+    return interval(2000);
   }
 }
 ```

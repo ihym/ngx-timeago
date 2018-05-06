@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
-    "test": "ng test dev --single-run",
+    "test": "ng test packages",
     "tdd": "ng test dev --watch",
     "commit": "git-cz"
   },

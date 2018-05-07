@@ -14,8 +14,6 @@ import { TimeagoFormatter } from './timeago.formatter';
 import { TimeagoIntl } from './timeago.intl';
 import { isDefined, coerceBooleanProperty, dateParser } from './util';
 
-export type IDate = string | number | Date;
-
 @Directive({
   selector: '[timeago]',
 })

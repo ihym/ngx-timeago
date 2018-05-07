@@ -10,6 +10,7 @@ before_install:
   - npm i -g npm@3 # fix for https://github.com/npm/npm/issues/19222
 after_success:
   - yarn build:lib
+  - yarn build:demo
   - cp .git dist/ngx-timeago/ -r # required by semantic release
   - cp README.md dist/ngx-timeago/
   - cd dist/ngx-timeago
@@ -24,3 +25,10 @@ addons:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  local_dir: dist/demo/
+  on:
+    branch: master

@@ -1,4 +1,4 @@
-# ngx-timeago [![Build Status](https://travis-ci.org/ihym/ngx-timeago.svg?branch=master)](https://travis-ci.org/ngx-timeago) [![npm version](https://badge.fury.io/js/ngx-timeago.svg)](https://badge.fury.io/js/ngx-timeago) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?style=flat-square)](https://renovateapp.com/) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+# ngx-timeago [![Build Status](https://travis-ci.org/ihym/ngx-timeago.svg?branch=master)](https://travis-ci.org/ihym/ngx-timeago) [![npm version](https://badge.fury.io/js/ngx-timeago.svg)](https://badge.fury.io/js/ngx-timeago) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?style=flat-square)](https://renovateapp.com/) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 Live updating timestamps in Angular 6+.
 

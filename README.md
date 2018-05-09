@@ -160,7 +160,7 @@ If you want to write your own formatter, you need to create a class that impleme
 
 [Example](lib/src/timeago.formatter.ts)
 
-Once you've defined your formatter, you can provide it in your configuration by adding it to its `providers` property.
+Once you've defined your formatter, you can provide it in your configuration.
 
 ```ts
 @NgModule({
@@ -177,7 +177,7 @@ export class AppModule { }
 
 #### Write your own clock
 
-The only required method to build your own clock, is `register` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using the provided formatter (and maybe intl, if provided).
+The only required method to build your own clock, is `register` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using your formatter (and intl, if available).
 
 ```ts
 import { TimeagoClock } from 'ngx-timeago';

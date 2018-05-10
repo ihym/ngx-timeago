@@ -14,11 +14,14 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@angular/animations": "^6.0.0",
+    "@angular/cdk": "^6.0.1",
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/core": "^6.0.0",
     "@angular/forms": "^6.0.0",
     "@angular/http": "^6.0.0",
+    "@angular/material": "^6.0.1",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
@@ -33,6 +36,7 @@
     "@angular/language-service": "^6.0.0",
     "@types/jasmine": "~2.8.0",
     "@types/node": "~9.6.0",
+    "bootstrap": "^4.1.1",
     "codelyzer": "~4.3.0",
     "commitizen": "2.9.6",
     "cpr": "^3.0.0",

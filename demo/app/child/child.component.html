@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Custom formatter & intl</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="clearfix w-100 align-text-baseline">
+      <strong class="float-left" timeago [date]="date" [live]="live" [suffix]="suffix"></strong>
+      <div class="float-right">
+        <mat-checkbox color="primary" class="ml-3" [(ngModel)]="live">Live</mat-checkbox>      
+        <mat-checkbox color="primary" class="ml-3" [(ngModel)]="suffix">Suffix</mat-checkbox>
+        <br>
+        <mat-form-field class="float-right" style="width: 70px;">
+          <mat-select [value]="lang" (valueChange)="setLang($event)">
+            <mat-option value="en">en</mat-option>
+            <mat-option value="fr">fr</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

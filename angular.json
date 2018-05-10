@@ -19,7 +19,7 @@
               {
                 "glob": "**/*",
                 "input": "demo/assets",
-                "output": "/assets"
+                "output": "/"
               },
               {
                 "glob": "favicon.ico",
@@ -146,7 +146,7 @@
               {
                 "glob": "**/*",
                 "input": "demo/assets",
-                "output": "/assets"
+                "output": "/"
               },
               {
                 "glob": "favicon.ico",

@@ -1,0 +1,38 @@
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12 col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
+          <mat-card-title>ngx-timeago</mat-card-title>
+          <mat-card-subtitle>⏰ Live updating timestamps in Angular 6+</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Custom clock</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="clearfix w-100">
+                <strong class="float-left" timeago [date]="date" [live]="live" [suffix]="suffix"></strong>
+                <div class="float-right">
+                  <mat-checkbox color="primary" [(ngModel)]="live">Live</mat-checkbox>      
+                  <mat-checkbox color="primary" class="ml-3" [(ngModel)]="suffix">Suffix</mat-checkbox>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <router-outlet></router-outlet>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <a href="https://www.npmjs.com/package/ngx-timeago" alt="NPM" title="Install with NPM">
+            <img src="img/npm.svg" style="height:15px; background:transparent;"/>
+          </a>
+          <a href="https://github.com/ihym/ngx-timeago" alt="Source" title="View Source" class="ml-2">
+            <img src="img/octicon.png" style="height:20px; background:transparent;"/>
+          </a>
+          </mat-card-actions>
+      </mat-card>
+    </div>   
+  </div>
+</div>

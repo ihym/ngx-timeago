@@ -1,15 +1,30 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TimeagoIntl } from 'ngx-timeago';
+import englishStrings from 'ngx-timeago/language-strings/en';
+import frenchStrings from 'ngx-timeago/language-strings/fr';
 
 @Component({
   selector: 'app-child',
-  template: `
-    <h1> Child Module </h1>
-    <div *ngFor="let date of dates;" timeago [date]="date" live="true"></div>
-    <app-foo></app-foo>
-  `,
+  templateUrl: './child.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
-  now = Date.now();
-  dates = Array.from(new Array(10), (val, index) => this.now - index * 1000);
+  date = Date.now() - 40000;
+  live = true;
+  suffix = true;
+  lang = 'en';
+
+  constructor(private intl: TimeagoIntl) {
+    this.setLang(this.lang);
+  }
+
+  setLang(lang: string) {
+    this.lang = lang;
+    switch (lang) {
+      case 'en': this.intl.strings = englishStrings; break;
+      case 'fr': this.intl.strings = frenchStrings; break;
+      default: break;
+    }
+    this.intl.changes.next();
+  }
 }

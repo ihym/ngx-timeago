@@ -30,27 +30,9 @@ export interface IL10nsStrings {
  * include it in a custom provider
  */
 @Injectable()
-export class TimeagoIntl implements IL10nsStrings {
-  prefixAgo?: StringOrFn;
-  prefixFromNow?: StringOrFn;
-  suffixAgo?: StringOrFn;
-  suffixFromNow?: StringOrFn;
-  second?: StringOrFn;
-  seconds?: StringOrFn;
-  minute?: StringOrFn;
-  minutes?: StringOrFn;
-  hour?: StringOrFn;
-  hours?: StringOrFn;
-  day?: StringOrFn;
-  days?: StringOrFn;
-  week?: StringOrFn;
-  weeks?: StringOrFn;
-  month?: StringOrFn;
-  months?: StringOrFn;
-  year?: StringOrFn;
-  years?: StringOrFn;
-  wordSeparator?: string;
-  numbers?: NumberArray;
+export class TimeagoIntl {
+
+  strings: IL10nsStrings;
 
   /**
    * Stream that emits whenever the l10n strings are changed

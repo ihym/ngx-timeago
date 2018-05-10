@@ -136,7 +136,7 @@ import englishStrings from 'ngx-timeago/language-strings/en';
 })
 export class AppComponent {
   constructor(intl: TimeagoIntl) {
-    Object.assign(intl, englishStrings);
+    intl.strings = englishStrings;
     intl.changes.next();
   }
 }

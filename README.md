@@ -2,7 +2,7 @@
 
 Live updating timestamps in Angular 6+.
 
-Check [demo](/demo) for a simple example.
+[demo](https://ihym.github.io/ngx-timeago/)
 
 Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
 

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TimeagoModule, TimeagoClock, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
 import { Observable, interval } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TimeagoModule, TimeagoClock } from 'ngx-timeago';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,20 +14,16 @@ export class MyClock extends TimeagoClock {
   }
 }
 
-export class MyIntl extends TimeagoIntl {
-// do extra stuff here... maybe subscribe to the TranslateService from ngx-translate?
-}
-
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    SharedModule,
+    BrowserAnimationsModule,
     TimeagoModule.forRoot({
       clock: { provide: TimeagoClock, useClass: MyClock },
-      intl: { provide: TimeagoIntl, useClass: MyIntl },
-      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
     }),
     AppRoutingModule
   ],

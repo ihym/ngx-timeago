@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+.header-image {
+  background-image: url('assets/img/angular.png');
+  background-size: cover;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--light);
+}

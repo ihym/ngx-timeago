@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Observable, interval } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-import { TimeagoModule } from 'ngx-timeago';
+import { TimeagoModule, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
+import { SharedModule } from '../shared/shared.module';
 
 import { ChildComponent } from './child.component';
 import { FooComponent } from './foo/foo.component';
 
 import { ChildRoutingModule } from './child-routing.module';
+
+export class MyIntl extends TimeagoIntl {
+// do extra stuff here... maybe subscribe to the TranslateService from ngx-translate?
+}
 
 @NgModule({
   declarations: [
@@ -15,9 +17,12 @@ import { ChildRoutingModule } from './child-routing.module';
     FooComponent,
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     ChildRoutingModule,
-    TimeagoModule.forChild(),
+    TimeagoModule.forChild({
+      intl: { provide: TimeagoIntl, useClass: MyIntl },
+      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
+    }),
   ],
   bootstrap: [ChildComponent]
 })

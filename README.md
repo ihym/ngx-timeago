@@ -221,7 +221,6 @@ $ npm start dev
 ## TODO
 * Increase test coverage
 * Add TimeagoPipe
-* Enhance demo (PRs are welcome!)
 * Provide more sophisticated clocks/formatters (PRs are welcome too!)
 
 ***

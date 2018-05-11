@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
 import englishStrings from 'ngx-timeago/language-strings/en';
-import frenchStrings from 'ngx-timeago/language-strings/fr';
+import englishShortStrings from 'ngx-timeago/language-strings/en-short';
 
 @Component({
   selector: 'app-child',
@@ -22,7 +22,7 @@ export class ChildComponent {
     this.lang = lang;
     switch (lang) {
       case 'en': this.intl.strings = englishStrings; break;
-      case 'fr': this.intl.strings = frenchStrings; break;
+      case 'en-short': this.intl.strings = englishShortStrings; break;
       default: break;
     }
     this.intl.changes.next();

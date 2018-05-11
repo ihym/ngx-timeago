@@ -11,12 +11,12 @@ export type StringOrFn = ((value: number, millisDelta:  number) => string) | str
 export type NumberArray = [ string, string, string, string, string, string, string, string, string, string ];
 
 export abstract class TimeagoFormatter {
-  constructor(@Optional() protected intl: TimeagoIntl) {}
+  constructor(@Optional() protected intl?: TimeagoIntl) {}
 
-  parse(then: number, hasSuffix: boolean): string {
+  parse(then: number): string {
     const now = Date.now();
     const seconds = Math.round(Math.abs(now - then) / 1000);
-    const suffix = hasSuffix ? then < now ? 'ago' : 'from now' : '';
+    const suffix = then < now ? 'ago' : 'from now';
 
     const [value, unit] =
       seconds < MINUTE
@@ -41,7 +41,7 @@ export abstract class TimeagoFormatter {
 
 @Injectable()
 export class TimeagoDefaultFormatter extends TimeagoFormatter {
-  format(value: number, unit: string, suffix: string): string {
+  protected format(value: number, unit: string, suffix: string): string {
     if (value !== 1) {
       unit += 's';
     }
@@ -51,7 +51,7 @@ export class TimeagoDefaultFormatter extends TimeagoFormatter {
 
 @Injectable()
 export class TimeagoCustomFormatter extends TimeagoFormatter {
-  format(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
+  protected format(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
     /** convert weeks to days if strings don't handle weeks */
     if (unit === 'week' && !this.intl.strings.week && !this.intl.strings.weeks) {
       const days = Math.round(Math.abs(now - then) / (1000 * 60 * 60 * 24));

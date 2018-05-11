@@ -14,10 +14,9 @@
             </mat-card-header>
             <mat-card-content>
               <div class="clearfix w-100">
-                <strong class="float-left" timeago [date]="date" [live]="live" [suffix]="suffix"></strong>
+                <strong class="float-left" timeago [date]="date" [live]="live"></strong>
                 <div class="float-right">
                   <mat-checkbox color="primary" [(ngModel)]="live">Live</mat-checkbox>      
-                  <mat-checkbox color="primary" class="ml-3" [(ngModel)]="suffix">Suffix</mat-checkbox>
                 </div>
               </div>
             </mat-card-content>

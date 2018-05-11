@@ -2,7 +2,7 @@
 
 Live updating timestamps in Angular 6+.
 
-[demo](https://ihym.github.io/ngx-timeago/)
+[https://ihym.github.io/ngx-timeago/](https://ihym.github.io/ngx-timeago/)
 
 Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
 
@@ -149,7 +149,7 @@ You can also customize the language strings or provide your own. Combined with t
 
 This is how you use the **directive**:
 ```html
-<div timeago [date]="2671200000" [live]="true" [suffix]="true"></div>
+<div timeago [date]="2671200000" [live]="true"></div>
 ```
 
 ## API

@@ -59,15 +59,6 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   }
   private _live = true;
 
-  @Input()
-  get suffix(): boolean {
-    return this._suffix;
-  }
-  set suffix(suffix: boolean) {
-    this._suffix = coerceBooleanProperty(suffix);
-  }
-  private _suffix = true;
-
   constructor(@Optional() intl: TimeagoIntl,
               formatter: TimeagoFormatter,
               element: ElementRef,
@@ -75,7 +66,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.parse(this.date, this.suffix)));
+    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.parse(this.date)));
   }
 
   ngOnChanges(changes: SimpleChanges) {

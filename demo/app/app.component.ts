@@ -7,5 +7,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 export class AppComponent {
   date = Date.now() - 40000;
   live = true;
-  suffix = true;
 }

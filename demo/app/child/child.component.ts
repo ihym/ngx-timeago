@@ -11,7 +11,6 @@ import englishShortStrings from 'ngx-timeago/language-strings/en-short';
 export class ChildComponent {
   date = Date.now() - 40000;
   live = true;
-  suffix = true;
   lang = 'en';
 
   constructor(private intl: TimeagoIntl) {

@@ -219,7 +219,7 @@ $ npm start dev
 ```
 
 ## TODO
-* Increase test coverage
+* Increase test coverage (testing code that involves the RxJS delay() operator is still a bit obscure)
 * Add TimeagoPipe
 * Provide more sophisticated clocks/formatters (PRs are welcome too!)
 

@@ -66,7 +66,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.parse(this.date)));
+    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.format(this.date)));
   }
 
   ngOnChanges(changes: SimpleChanges) {

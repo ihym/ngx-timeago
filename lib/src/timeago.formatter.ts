@@ -4,44 +4,49 @@ import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 
 export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 
-export type Suffix = 'ago' | 'from now' | '';
+export type Suffix = 'ago' | 'from now';
 
 export type StringOrFn = ((value: number, millisDelta:  number) => string) | string;
 
 export type NumberArray = [ string, string, string, string, string, string, string, string, string, string ];
 
+const defaultFormattter = function(then: number): {value: number, unit: Unit, suffix: Suffix} {
+  const now = Date.now();
+  const seconds = Math.round(Math.abs(now - then) / 1000);
+  const suffix: Suffix = then < now ? 'ago' : 'from now';
+
+  const [value, unit]: [number, Unit] =
+    seconds < MINUTE
+      ? [Math.round(seconds), 'second']
+      : seconds < HOUR
+        ? [Math.round(seconds / MINUTE), 'minute']
+        : seconds < DAY
+          ? [Math.round(seconds / HOUR), 'hour']
+          : seconds < WEEK
+            ? [Math.round(seconds / DAY), 'day']
+            : seconds < MONTH
+              ? [Math.round(seconds / WEEK), 'week']
+              : seconds < YEAR
+                ? [Math.round(seconds / MONTH), 'month']
+                : [Math.round(seconds / YEAR), 'year'];
+
+  return {value, unit, suffix};
+}
+
 export abstract class TimeagoFormatter {
-  constructor(@Optional() protected intl?: TimeagoIntl) {}
+  abstract format(then: number): string
 
-  parse(then: number): string {
-    const now = Date.now();
-    const seconds = Math.round(Math.abs(now - then) / 1000);
-    const suffix = then < now ? 'ago' : 'from now';
-
-    const [value, unit] =
-      seconds < MINUTE
-        ? [Math.round(seconds), 'second']
-        : seconds < HOUR
-          ? [Math.round(seconds / MINUTE), 'minute']
-          : seconds < DAY
-            ? [Math.round(seconds / HOUR), 'hour']
-            : seconds < WEEK
-              ? [Math.round(seconds / DAY), 'day']
-              : seconds < MONTH
-                ? [Math.round(seconds / WEEK), 'week']
-                : seconds < YEAR
-                  ? [Math.round(seconds / MONTH), 'month']
-                  : [Math.round(seconds / YEAR), 'year'];
-
-    return this.format(value, unit, suffix);
-  }
-
-  protected abstract format(value: number, unit: string, suffix: string, now?: number, then?: number): string;
+  protected abstract parse(value: number, unit: Unit, suffix: Suffix, now?: number, then?: number): string;
 }
 
 @Injectable()
 export class TimeagoDefaultFormatter extends TimeagoFormatter {
-  protected format(value: number, unit: string, suffix: string): string {
+  format(then: number): string {
+    const {suffix, value, unit} = defaultFormattter(then);
+    return this.parse(value, unit, suffix);
+  }
+
+  protected parse(value: number, unit: Unit, suffix: Suffix): string {
     if (value !== 1) {
       unit += 's';
     }
@@ -51,7 +56,16 @@ export class TimeagoDefaultFormatter extends TimeagoFormatter {
 
 @Injectable()
 export class TimeagoCustomFormatter extends TimeagoFormatter {
-  protected format(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
+  constructor(private intl: TimeagoIntl) {
+    super();
+  }
+
+  format(then: number): string {
+    const {suffix, value, unit} = defaultFormattter(then);
+    return this.parse(value, unit, suffix, Date.now(), then);
+  }
+
+  protected parse(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
     /** convert weeks to days if strings don't handle weeks */
     if (unit === 'week' && !this.intl.strings.week && !this.intl.strings.weeks) {
       const days = Math.round(Math.abs(now - then) / (1000 * 60 * 60 * 24));

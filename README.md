@@ -156,7 +156,7 @@ This is how you use the **directive**:
 
 #### Write your own formatter
 
-If you want to write your own formatter, you need to create a class that implements `TimeagoFormatter`. The only required method is `parse` that must return the final `string`.
+If you want to write your own formatter, you need to create a class that implements `TimeagoFormatter`. The only required method is `format` that must return the final `string`.
 
 [Example](lib/src/timeago.formatter.ts)
 

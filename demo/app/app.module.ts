@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 export class MyClock extends TimeagoClock {
   register(then: number): Observable<number> {
-    return interval(2000);
+    return interval(1000);
   }
 }
 

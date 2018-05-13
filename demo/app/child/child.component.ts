@@ -9,7 +9,7 @@ import englishShortStrings from 'ngx-timeago/language-strings/en-short';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
-  date = Date.now() - 40000;
+  date = Date.now() - 50000;
   live = true;
   lang = 'en';
 

@@ -5,6 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  date = Date.now() - 40000;
+  date = Date.now() - 50000;
   live = true;
 }

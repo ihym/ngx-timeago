@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Observable, interval } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { expand, delay, skip } from 'rxjs/operators';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeagoModule, TimeagoClock } from 'ngx-timeago';
 
@@ -10,7 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 
 export class MyClock extends TimeagoClock {
   register(then: number): Observable<number> {
-    return interval(1000);
+    return of(0)
+    .pipe(
+      expand(() => {
+        const now = Date.now();
+        const seconds = Math.round(Math.abs(now - then) / 1000);
+
+        const period = seconds < 60 ? 1000 : 1000 * 60;
+
+        return of(period).pipe(delay(period));
+      }),
+      skip(1)
+    );
   }
 }
 

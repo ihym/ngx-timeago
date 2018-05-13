@@ -1,4 +1,4 @@
-import { TimeagoDefaultClock } from '../lib/src/timeago.clock';
+import { TimeagoDefaultClock } from '../lib/src/public_api';
 import { TestScheduler } from 'rxjs/testing';
 import { map } from 'rxjs/operators';
 
@@ -7,11 +7,17 @@ describe('TimeagoClock', () => {
     expect(actual).toEqual(expected);
   });
 
-  describe('default', () => {
+  describe('Default', () => {
     let clock: TimeagoDefaultClock;
 
     beforeEach(() => {
       clock = new TimeagoDefaultClock();
+    });
+
+    it('is defined', () => {
+      expect(TimeagoDefaultClock).toBeDefined();
+
+      expect(clock instanceof TimeagoDefaultClock).toBeTruthy();
     });
 
     it('should complete instantly for differences greater than a day', (() => {

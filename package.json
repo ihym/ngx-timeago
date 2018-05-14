@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "ng build",
-    "build:demo": "cpr dist/ngx-timeago demo/ngx-timeago && ng build packages --base-href=https://ihym.github.io/ngx-timeago/ && rimraf demo/ngx-timeago",
+    "build:demo": "cpr dist/ngx-timeago demo/ngx-timeago && ng build packages --prod --base-href=https://ihym.github.io/ngx-timeago/ && rimraf demo/ngx-timeago",
     "build:lib": "rimraf dist && ng-packagr -p lib/package.json && gulp",
     "lint": "ng lint",
     "ng": "ng",

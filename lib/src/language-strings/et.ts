@@ -1,6 +1,6 @@
 import {IL10nsStrings} from '../timeago.intl';
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: null,
   prefixFromNow: null,
   suffixAgo: 'tagasi',
@@ -18,4 +18,4 @@ const strings: IL10nsStrings = {
   years: function (n, d) { return d < 0 ? '%d aasta' : '%d aastat'; },
 };
 
-export default strings;
+

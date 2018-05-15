@@ -1,6 +1,6 @@
 import {IL10nsStrings} from '../timeago.intl';
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: 'לפני',
   prefixFromNow: 'עוד',
   seconds: 'פחות מדקה',
@@ -16,4 +16,4 @@ const strings: IL10nsStrings = {
   years: function (number) { return (number === 2) ? 'שנתיים' : '%d שנים'; },
 };
 
-export default strings;
+

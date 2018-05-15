@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
-import englishStrings from 'ngx-timeago/language-strings/en';
-import englishShortStrings from 'ngx-timeago/language-strings/en-short';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
+import {strings as englishShortStrings} from 'ngx-timeago/language-strings/en-short';
 
 @Component({
   selector: 'app-child',

@@ -11,7 +11,7 @@ function numpf (n, f, s, t) {
   }
 }
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: null,
   prefixFromNow: 'через',
   suffixAgo: 'тому',
@@ -29,4 +29,4 @@ const strings: IL10nsStrings = {
   years: function (value) { return numpf(value, '%d рік', '%d роки', '%d років'); },
 };
 
-export default strings;
+

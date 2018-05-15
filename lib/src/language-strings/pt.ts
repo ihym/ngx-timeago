@@ -1,6 +1,6 @@
 import {IL10nsStrings} from '../timeago.intl';
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   suffixAgo: 'atrás',
   suffixFromNow: 'a partir de agora',
   seconds: 'menos de um minuto',
@@ -16,4 +16,4 @@ const strings: IL10nsStrings = {
   years: '%d anos',
 };
 
-export default strings;
+

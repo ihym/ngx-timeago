@@ -9,7 +9,7 @@ function numpf (n, s, t) {
   }
 }
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: null,
   prefixFromNow: 'za',
   suffixAgo: 'temu',
@@ -27,4 +27,4 @@ const strings: IL10nsStrings = {
   years: function (value) { return numpf(value, '%d lata', '%d lat'); },
 };
 
-export default strings;
+

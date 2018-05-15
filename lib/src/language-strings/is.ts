@@ -1,6 +1,6 @@
 import {IL10nsStrings} from '../timeago.intl';
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: 'fyrir',
   prefixFromNow: 'eftir',
   suffixAgo: 'síðan',
@@ -19,4 +19,4 @@ const strings: IL10nsStrings = {
   wordSeparator: ' ',
 };
 
-export default strings;
+

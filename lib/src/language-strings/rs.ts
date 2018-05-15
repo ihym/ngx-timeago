@@ -12,7 +12,7 @@ function numpf (n: number, f: string, s: string, t: string): string {
   }
 }
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: 'pre',
   prefixFromNow: 'za',
   suffixAgo: null,
@@ -44,4 +44,4 @@ const strings: IL10nsStrings = {
   wordSeparator: ' ',
 };
 
-export default strings;
+

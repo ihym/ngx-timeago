@@ -126,7 +126,7 @@ To use any of the languages provided, you will have to import the language strin
 ```ts
 import { Component } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
-import englishStrings from 'ngx-timeago/language-strings/en';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 
 @Component({
   selector: 'app',

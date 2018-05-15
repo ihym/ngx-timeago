@@ -4,7 +4,7 @@ function f (n, d, a) {
   return a[d >= 0 ? 0 : a.length === 2 || n < 5 ? 1 : 2];
 }
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: 'před',
   prefixFromNow: 'za',
   suffixAgo: null,
@@ -22,4 +22,4 @@ const strings: IL10nsStrings = {
   years: function (n, d) { return f(n, d, ['%d lety', '%d roky', '%d let']); },
 };
 
-export default strings;
+

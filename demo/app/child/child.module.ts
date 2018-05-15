@@ -8,7 +8,7 @@ import { FooComponent } from './foo/foo.component';
 import { ChildRoutingModule } from './child-routing.module';
 
 export class MyIntl extends TimeagoIntl {
-// do extra stuff here... maybe subscribe to the TranslateService from ngx-translate?
+// do extra stuff here...
 }
 
 @NgModule({

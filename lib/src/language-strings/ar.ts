@@ -4,7 +4,7 @@ function numpf (n, a) {
   return a[n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5];
 }
 
-const strings: IL10nsStrings = {
+export const strings: IL10nsStrings = {
   prefixAgo: 'منذ',
   prefixFromNow: 'بعد',
   suffixAgo: null,
@@ -130,4 +130,4 @@ const strings: IL10nsStrings = {
   },
 };
 
-export default strings;
+

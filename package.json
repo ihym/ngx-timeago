@@ -3,15 +3,16 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "ng build",
-    "build:demo": "cpr dist/ngx-timeago demo/ngx-timeago && ng build packages --prod --base-href=https://ihym.github.io/ngx-timeago/ && rimraf demo/ngx-timeago",
+    "ng:build:demo": "ng build packages --prod --base-href=https://ihym.github.io/ngx-timeago/",
+    "build:demo": "cpr dist/ngx-timeago demo/ngx-timeago && npm run ng:build:demo && rimraf demo/ngx-timeago",
     "build:lib": "rimraf dist && ng-packagr -p lib/package.json && gulp",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test packages",
     "tdd": "ng test dev --watch",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "analyze": "npm run build:lib && cpr dist/ngx-timeago demo/ngx-timeago && npm run ng:build:demo  -- --stats-json && rimraf demo/ngx-timeago && webpack-bundle-analyzer dist/demo/stats.json"
   },
   "dependencies": {
     "@angular/animations": "^6.0.0",
@@ -59,7 +60,8 @@
     "tsickle": "^0.27.3",
     "tslib": "^1.7.1",
     "tslint": "~5.9.0",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "webpack-bundle-analyzer": "^2.11.3"
   },
   "config": {
     "commitizen": {

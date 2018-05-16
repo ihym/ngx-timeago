@@ -10,7 +10,6 @@ Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
 * [Usage](#usage)
 * [API](#api)
 * [Contribute](#contribute)
-* [TODO](#todo)
 
 
 ## Installation
@@ -70,8 +69,6 @@ you can export the `TimeagoModule` to make sure you don't have to import it in e
 })
 export class SharedModule { }
 ```
-
-> Note: Never call a `forRoot` static method in the `SharedModule`. You might end up with different instances of the service in your injector tree. But you can use `forChild` if necessary.
 
 ##### Lazy loaded modules
 
@@ -217,11 +214,6 @@ $ npm install
 $ npm run build:lib
 $ npm start dev
 ```
-
-## TODO
-* Increase test coverage (testing code that involves the RxJS delay() operator is still a bit obscure)
-* Add TimeagoPipe
-* Provide more sophisticated clocks/formatters (PRs are welcome too!)
 
 ***
 MIT © [Vasilis Diakomanolis](https://github.com/ihym)

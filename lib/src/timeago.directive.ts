@@ -40,7 +40,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
       if (this.clockSubscription) {
         this.clockSubscription.unsubscribe();
       }
-      this.clockSubscription = this.clock.register(date)
+      this.clockSubscription = this.clock.tick(date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
     } else {

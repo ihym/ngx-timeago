@@ -22,7 +22,7 @@ describe('TimeagoClock', () => {
 
     it('should complete instantly for differences greater than a day', (() => {
       testScheduler.run(({ expectObservable }) => {
-        const source = clock.register(Date.now() - 60 * 60 * 24 * 1000).pipe(map(x => x.toString()));
+        const source = clock.tick(Date.now() - 60 * 60 * 24 * 1000).pipe(map(x => x.toString()));
         const expected = '|';
         expectObservable(source).toBe(expected);
       });

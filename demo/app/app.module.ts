@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 export class MyClock extends TimeagoClock {
-  register(then: number): Observable<number> {
+  tick(then: number): Observable<number> {
     return of(0)
     .pipe(
       expand(() => {

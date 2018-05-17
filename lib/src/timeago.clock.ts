@@ -4,12 +4,12 @@ import { expand, delay, skip } from 'rxjs/operators';
 import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 
 export abstract class TimeagoClock {
-  abstract register(then: number): Observable<any>;
+  abstract tick(then: number): Observable<any>;
 }
 
 @Injectable()
 export class TimeagoDefaultClock extends TimeagoClock {
-  register(then: number): Observable<number> {
+  tick(then: number): Observable<number> {
     return of(0)
       .pipe(
         expand(() => {

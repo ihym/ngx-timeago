@@ -174,7 +174,7 @@ export class AppModule { }
 
 #### Write your own clock
 
-The only required method to build your own clock, is `register` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using your formatter (and intl, if available).
+The only required method to build your own clock, is `tick` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using your formatter (and intl, if available).
 
 ```ts
 import { TimeagoClock } from 'ngx-timeago';
@@ -182,7 +182,7 @@ import { Observable, interval } from 'rxjs';
 
 // ticks every 2s
 export class MyClock extends TimeagoClock {
-  register(then: number): Observable<number> {
+  tick(then: number): Observable<number> {
     return interval(2000);
   }
 }

@@ -16,6 +16,7 @@ import { isDefined, coerceBooleanProperty, dateParser } from './util';
 
 @Directive({
   selector: '[timeago]',
+  exportAs: 'timeago',
 })
 export class TimeagoDirective implements OnChanges, OnDestroy {
   private intlSubscription: Subscription;
@@ -84,9 +85,11 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   ngOnDestroy() {
     if (this.intlSubscription) {
       this.intlSubscription.unsubscribe();
+      this.intlSubscription = undefined;
     }
     if (this.clockSubscription) {
       this.clockSubscription.unsubscribe();
+      this.clockSubscription = undefined;
     }
     this.stateChanges.complete();
   }

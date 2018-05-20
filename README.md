@@ -89,15 +89,15 @@ Since lazy loaded modules use a different injector from the rest of your applica
 export class LazyLoadedModule { }
 ```
 
-##### Configuration
+##### I18n
 
 By default, there is no intl service available, as the default formatter doesn't provide language support.
-You should provide one, if you end up with a formatter that needs it (either TimeagoCustomFormatter which is provided by the lib or your own). The purpose of the intl service is to contain all the necessary i18n strings used in the provided formatter (similar to how Angular Material handles i18n).
+You should provide one, if you end up with a formatter that needs it (either TimeagoCustomFormatter which is provided by the lib or your own). The purpose of the intl service is to contain all the necessary i18n strings used by your formatter.
 
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Timeago, TimeagoIntl } from 'ngx-timeago';
+import { Timeago, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from 'ngx-timeago';
 import { AppComponent } from './app';
 
 export class MyIntl extends TimeagoIntl {
@@ -109,6 +109,7 @@ export class MyIntl extends TimeagoIntl {
     BrowserModule,
     Timeago.forRoot({
       intl: { provide: TimeagoIntl, useClass: MyIntl },
+      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
     })
   ],
   bootstrap: [AppComponent]
@@ -139,7 +140,7 @@ export class AppComponent {
 }
 ```
 
-You can also customize the language strings or provide your own. Combined with the ability to provide your own formatter, you have total control of the final output.
+You can also customize the language strings or provide your own.
 
 
 #### 2. Use the directive:

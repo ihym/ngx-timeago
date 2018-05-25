@@ -107,7 +107,7 @@ export class MyIntl extends TimeagoIntl {
 @NgModule({
   imports: [
     BrowserModule,
-    Timeago.forRoot({
+    TimeagoModule.forRoot({
       intl: { provide: TimeagoIntl, useClass: MyIntl },
       formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
     })
@@ -143,11 +143,17 @@ export class AppComponent {
 You can also customize the language strings or provide your own.
 
 
-#### 2. Use the directive:
+#### 2. Use the pipe or the directive:
+
+This is how you do it with the **pipe**:
+```html
+<div>{{2671200000 | timeago:live}}</div>
+```
+And in your component define live (`true` by default).
 
 This is how you use the **directive**:
 ```html
-<div timeago [date]="2671200000" [live]="true"></div>
+<div timeago [date]="2671200000" [live]="live"></div>
 ```
 
 ## API

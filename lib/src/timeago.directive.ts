@@ -5,7 +5,8 @@ import {
   Optional,
   SimpleChanges,
   OnChanges,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -40,12 +41,13 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
     if (this._date) {
       if (this.clockSubscription) {
         this.clockSubscription.unsubscribe();
+        this.clockSubscription = undefined;
       }
       this.clockSubscription = this.clock.tick(date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
     } else {
-      console.warn('[ngx-timeago] Invalid Date provided');
+      throw new SyntaxError(`Wrong parameter in TimeagoDirective. Expected a valid date, received: ${date}`);
     }
   }
   private _date: number;
@@ -61,20 +63,24 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   private _live = true;
 
   constructor(@Optional() intl: TimeagoIntl,
+              private cd: ChangeDetectorRef,
               formatter: TimeagoFormatter,
               element: ElementRef,
               private clock: TimeagoClock) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => this.setContent(element.nativeElement, formatter.format(this.date)));
+    this.stateChanges.subscribe(() => {
+      this.setContent(element.nativeElement, formatter.format(this.date));
+      this.cd.markForCheck();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.stateChanges.next();
   }
 
-  setContent(node: any, content: string): void {
+  setContent(node: any, content: string) {
     if (isDefined(node.textContent)) {
       node.textContent = content;
     } else {

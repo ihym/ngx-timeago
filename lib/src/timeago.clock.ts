@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, empty } from 'rxjs';
-import { expand, delay, skip } from 'rxjs/operators';
+import { Observable, of, empty, timer } from 'rxjs';
+import { expand, skip } from 'rxjs/operators';
 import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 
 export abstract class TimeagoClock {
@@ -25,7 +25,7 @@ export class TimeagoDefaultClock extends TimeagoClock {
                   ? 1000 * HOUR
                   : 0;
 
-          return period ? of(period).pipe(delay(period)) : empty();
+          return period ? timer(period) : empty();
         }),
         skip(1)
       );

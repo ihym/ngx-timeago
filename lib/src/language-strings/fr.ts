@@ -1,4 +1,4 @@
-import {IL10nsStrings} from '../timeago.intl';
+import { IL10nsStrings } from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: 'il y a',
@@ -15,5 +15,3 @@ export const strings: IL10nsStrings = {
   year: 'un an',
   years: '%d ans',
 };
-
-

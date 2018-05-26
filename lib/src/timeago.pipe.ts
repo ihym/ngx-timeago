@@ -6,12 +6,12 @@ import {
   Optional,
   ChangeDetectorRef
 } from '@angular/core';
-import { Subscription, ReplaySubject } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { TimeagoClock } from './timeago.clock';
 import { TimeagoFormatter } from './timeago.formatter';
 import { TimeagoIntl } from './timeago.intl';
 import { isDefined, coerceBooleanProperty, dateParser } from './util';
-import { filter, map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Injectable()
 @Pipe({
@@ -32,7 +32,7 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
    * - Intl change
    * - Clock tick
   */
-  stateChanges = new ReplaySubject<void>();
+  stateChanges = new Subject<void>();
 
   constructor(@Optional() intl: TimeagoIntl,
     cd: ChangeDetectorRef,

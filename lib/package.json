@@ -21,7 +21,7 @@
     "rxjs": ">=6.0.0"
   },
   "devDependencies": {
-    "semantic-release": "8.2.3"
+    "semantic-release": "15.6.1"
   },
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"

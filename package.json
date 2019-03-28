@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
-    "test": "ng test packages",
+    "test": "ng test packages --watch=false",
     "tdd": "ng test dev --watch",
     "commit": "git-cz",
     "analyze": "npm run build:lib && cpr dist/ngx-timeago demo/ngx-timeago && npm run ng:build:demo  -- --stats-json && rimraf demo/ngx-timeago && webpack-bundle-analyzer dist/demo/stats.json"

@@ -21,16 +21,6 @@ npm install ngx-timeago --save
 ```
 
 
-If you use **SystemJS** to load your files, you should adjust your configuration to point our UMD bundle:
-
-```javascript
-map: {
-  ...
-  'ngx-timeago': 'node_modules/ngx-timeago/bundles/ngx-timeago.umd.js'
-}
-```
-
-
 ## Usage
 
 #### 1. Import the `TimeagoModule`:

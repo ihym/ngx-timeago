@@ -119,7 +119,7 @@ import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 @Component({
   selector: 'app',
   template: `
-    <div timeago [date]="2671200000"></div>
+    <div timeago [date]="1553683912689"></div>
   `
 })
 export class AppComponent {
@@ -137,13 +137,13 @@ You can also customize the language strings or provide your own.
 
 This is how you do it with the **pipe**:
 ```html
-<div>{{2671200000 | timeago:live}}</div>
+<div>{{1553683912689 | timeago:live}}</div>
 ```
 And in your component define live (`true` by default).
 
 This is how you use the **directive**:
 ```html
-<div timeago [date]="2671200000" [live]="live"></div>
+<div timeago [date]="1553683912689" [live]="live"></div>
 ```
 
 ## API

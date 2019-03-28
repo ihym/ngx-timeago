@@ -11,7 +11,7 @@ import { strings as frenchShortStrings } from 'ngx-timeago/language-strings/fr-s
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
-  date = Date.now() - 58000;
+  date = Date.now() - 55000;
   live = true;
   lang = 'en';
 

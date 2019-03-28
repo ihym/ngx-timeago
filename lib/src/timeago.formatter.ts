@@ -35,8 +35,6 @@ const defaultFormattter = function(then: number): {value: number, unit: Unit, su
 
 export abstract class TimeagoFormatter {
   abstract format(then: number): string
-
-  protected abstract parse(value: number, unit: Unit, suffix: Suffix, now?: number, then?: number): string;
 }
 
 @Injectable()
@@ -46,7 +44,7 @@ export class TimeagoDefaultFormatter extends TimeagoFormatter {
     return this.parse(value, unit, suffix);
   }
 
-  protected parse(value: number, unit: Unit, suffix: Suffix): string {
+  private parse(value: number, unit: Unit, suffix: Suffix): string {
     if (value !== 1) {
       unit += 's';
     }
@@ -65,7 +63,7 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
     return this.parse(value, unit, suffix, Date.now(), then);
   }
 
-  protected parse(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
+  private parse(value: number, unit: Unit, suffix: Suffix, now: number, then: number) {
     /** convert weeks to days if strings don't handle weeks */
     if (unit === 'week' && !this.intl.strings.week && !this.intl.strings.weeks) {
       const days = Math.round(Math.abs(now - then) / (1000 * 60 * 60 * 24));

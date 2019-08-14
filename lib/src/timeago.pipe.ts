@@ -67,7 +67,7 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
         this.clockSubscription.unsubscribe();
         this.clockSubscription = undefined;
       }
-      this.clockSubscription = this.clock.tick(date)
+      this.clockSubscription = this.clock.tick(this.date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
       this.stateChanges.next();

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, empty, timer } from 'rxjs';
 import { expand, skip } from 'rxjs/operators';
-import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
+import { MINUTE, HOUR, DAY } from './util';
 
 export abstract class TimeagoClock {
   abstract tick(then: number): Observable<any>;
@@ -9,7 +9,7 @@ export abstract class TimeagoClock {
 
 @Injectable()
 export class TimeagoDefaultClock extends TimeagoClock {
-  tick(then: number): Observable<number> {
+  tick(then: number): Observable<any> {
     return of(0)
       .pipe(
         expand(() => {

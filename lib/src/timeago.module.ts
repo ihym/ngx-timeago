@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { TimeagoDirective } from './timeago.directive';
 import { TimeagoPipe } from './timeago.pipe';
-import { TimeagoIntl } from './timeago.intl';
 import { TimeagoClock, TimeagoDefaultClock } from './timeago.clock';
 import { TimeagoFormatter, TimeagoDefaultFormatter } from './timeago.formatter';
 

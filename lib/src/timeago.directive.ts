@@ -1,13 +1,4 @@
-import {
-  Directive,
-  Input,
-  ElementRef,
-  Optional,
-  SimpleChanges,
-  OnChanges,
-  OnDestroy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Directive, Input, ElementRef, Optional, OnChanges, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { TimeagoClock } from './timeago.clock';
@@ -33,10 +24,10 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
 
   /** The Date to display. An actual Date object or something that can be fed to new Date. */
   @Input()
-  get date(): number {
+  get date(): any {
     return this._date;
   }
-  set date(date: number) {
+  set date(date: any) {
     this._date = dateParser(date).valueOf();
     if (this._date) {
       if (this.clockSubscription) {
@@ -76,7 +67,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.stateChanges.next();
   }
 

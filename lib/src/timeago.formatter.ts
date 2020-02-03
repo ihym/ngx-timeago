@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TimeagoIntl } from './timeago.intl';
 import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
 

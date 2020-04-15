@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Optional, OnChanges, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Directive, Input, ElementRef, Optional, OnChanges, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { TimeagoClock } from './timeago.clock';
@@ -57,13 +57,18 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
               private cd: ChangeDetectorRef,
               formatter: TimeagoFormatter,
               element: ElementRef,
-              private clock: TimeagoClock) {
+              private clock: TimeagoClock,
+              private ngZone: NgZone
+              ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => {
-      this.setContent(element.nativeElement, formatter.format(this.date));
-      this.cd.markForCheck();
+
+    this.ngZone.runOutsideAngular(() => {
+      this.stateChanges.subscribe(() => {
+        this.setContent(element.nativeElement, formatter.format(this.date));
+        this.ngZone.run(() => cd.markForCheck());
+      });
     });
   }
 

@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy, Pipe, PipeTransform, Optional, ChangeDetectorRef } from '@angular/core';
+import { Injectable, OnDestroy, Pipe, PipeTransform, Optional, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { TimeagoClock } from './timeago.clock';
 import { TimeagoFormatter } from './timeago.formatter';
@@ -30,13 +30,18 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
   constructor(@Optional() intl: TimeagoIntl,
     cd: ChangeDetectorRef,
     formatter: TimeagoFormatter,
-    private clock: TimeagoClock) {
+    private clock: TimeagoClock,
+    private ngZone: NgZone
+    ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => {
-      this.value = formatter.format(this.date);
-      cd.markForCheck();
+
+    this.ngZone.runOutsideAngular(() => {
+      this.stateChanges.subscribe(() => {
+        this.value = formatter.format(this.date);
+        this.ngZone.run(() => cd.markForCheck());
+      });
     });
   }
 

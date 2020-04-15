@@ -32,7 +32,7 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
     formatter: TimeagoFormatter,
     private clock: TimeagoClock,
     private ngZone: NgZone
-    ) {
+  ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }

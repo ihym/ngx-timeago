@@ -54,12 +54,12 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   private _live = true;
 
   constructor(@Optional() intl: TimeagoIntl,
-              private cd: ChangeDetectorRef,
-              formatter: TimeagoFormatter,
-              element: ElementRef,
-              private clock: TimeagoClock,
-              private ngZone: NgZone
-              ) {
+    private cd: ChangeDetectorRef,
+    formatter: TimeagoFormatter,
+    element: ElementRef,
+    private clock: TimeagoClock,
+    private ngZone: NgZone
+  ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }

@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  MatCheckboxModule,
-  MatCardModule,
-  MatSelectModule,
-} from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [

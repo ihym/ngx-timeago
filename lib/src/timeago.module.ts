@@ -24,7 +24,7 @@ export class TimeagoModule {
   /**
    * Use this method in your root module to provide the TimeagoModule
    */
-  static forRoot(config: TimeagoModuleConfig = {}): ModuleWithProviders {
+  static forRoot(config: TimeagoModuleConfig = {}): ModuleWithProviders<TimeagoModule> {
     return {
       ngModule: TimeagoModule,
       providers: [
@@ -38,7 +38,7 @@ export class TimeagoModule {
   /**
    * Use this method in your other (non root) modules to import the directive/pipe
    */
-  static forChild(config: TimeagoModuleConfig = {}): ModuleWithProviders {
+  static forChild(config: TimeagoModuleConfig = {}): ModuleWithProviders<TimeagoModule> {
     return {
       ngModule: TimeagoModule,
       providers: [

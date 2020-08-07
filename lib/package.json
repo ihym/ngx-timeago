@@ -17,8 +17,8 @@
     "ngx-timeago"
   ],
   "peerDependencies": {
-    "@angular/core": ">=6.0.0",
-    "rxjs": ">=6.0.0"
+    "@angular/core": ">=10.0.0",
+    "rxjs": ">=6.6.0"
   },
   "devDependencies": {
     "semantic-release": "8.2.3"
@@ -29,7 +29,7 @@
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "workingDirectory": "../.ng_build",
-    "keepLifecycleScripts": true,    
+    "keepLifecycleScripts": true,
     "lib": {
       "entryFile": "src/public_api.ts"
     },

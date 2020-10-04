@@ -16,7 +16,7 @@ after_success:
   - cp .git dist/ngx-timeago/ -r # required by semantic release
   - cp README.md dist/ngx-timeago/
   - cd dist/ngx-timeago
-  - npm install
+  - npm install semantic-release@8.2.3 --no-save
   - npm run semantic-release
 branches:
   except:

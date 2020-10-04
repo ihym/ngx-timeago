@@ -20,6 +20,12 @@ First you need to install the npm module:
 npm install ngx-timeago --save
 ```
 
+Choose the version corresponding to your Angular version:
+
+| Angular       | ngx-timeago        |
+| ------------- | -------------------|
+| 10            | 2.x+               |
+| 6,7,8,9       | 1.x+               |
 
 ## Usage
 

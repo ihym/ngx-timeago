@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, of, empty, timer } from 'rxjs';
 import { expand, skip } from 'rxjs/operators';
 import { MINUTE, HOUR, DAY } from './util';
@@ -9,7 +10,15 @@ export abstract class TimeagoClock {
 
 @Injectable()
 export class TimeagoDefaultClock extends TimeagoClock {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    super();
+  }
+
   tick(then: number): Observable<any> {
+    return isPlatformBrowser(this.platformId) ? this.browserTick(then) : empty();
+  }
+
+  private browserTick(then: number): Observable<any> {
     return of(0)
       .pipe(
         expand(() => {

@@ -8,7 +8,7 @@ import {
   TimeagoIntl,
   TimeagoCustomFormatter,
   IL10nsStrings
-} from '../lib/src/public_api';
+} from '../public_api';
 
 const strings: IL10nsStrings = {
   prefixAgo: null,

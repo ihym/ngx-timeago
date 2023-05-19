@@ -17,18 +17,14 @@
     "ngx-timeago"
   ],
   "peerDependencies": {
-    "@angular/core": ">=10.0.0",
-    "rxjs": ">=6.6.0"
+    "@angular/core": ">=16.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
   },
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish --ignore-scripts && semantic-release post"
   },
-  "ngPackage": {
-    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "keepLifecycleScripts": true,
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "dest": "../dist/ngx-timeago"
-  }
+  "sideEffects": false
 }

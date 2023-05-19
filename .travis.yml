@@ -3,9 +3,7 @@ sudo: required
 notifications:
   email: false
 node_js:
-  - '10'
-before_install:
-  - if [[ `npm -v` != 6* ]]; then npm i -g npm@6; fi
+  - '18'
 services:
   - xvfb
 addons:

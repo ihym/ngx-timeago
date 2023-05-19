@@ -20,7 +20,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
    * - Intl change
    * - Clock tick
   */
-  stateChanges = new Subject<any>();
+  stateChanges = new Subject<void>();
 
   /** The Date to display. An actual Date object or something that can be fed to new Date. */
   @Input()

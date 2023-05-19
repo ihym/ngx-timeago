@@ -1,4 +1,4 @@
-import { TimeagoDefaultClock } from '../lib/src/public_api';
+import { TimeagoDefaultClock } from '../public_api';
 import { TestScheduler } from 'rxjs/testing';
 import { map } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Injectable, ViewChild } from '@angular/core';
 import { TestBed, fakeAsync, tick, discardPeriodicTasks, ComponentFixture } from '@angular/core/testing';
-import { TimeagoModule, TimeagoClock, TimeagoFormatter, IL10nsStrings, TimeagoIntl, TimeagoCustomFormatter } from '../lib/src/public_api';
+import { TimeagoModule, TimeagoClock, TimeagoFormatter, IL10nsStrings, TimeagoIntl, TimeagoCustomFormatter } from '../public_api';
 
 const strings: IL10nsStrings = {
   prefixAgo: null,

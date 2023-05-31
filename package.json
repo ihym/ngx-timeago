@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build:demo": "ng build ngx-timeago-demo --base-href=https://ihym.github.io/ngx-timeago/",
-    "build:lib": "ng build ngx-timeago",
+    "build:lib": "ng build ngx-timeago && yarn run lib:compile:locales",
+    "lib:compile:locales": "tsc --project ./tsconfig.locales.json",
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",

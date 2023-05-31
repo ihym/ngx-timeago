@@ -2,18 +2,18 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/ngx-timeago/language-strings",
-    "sourceMap": true,
+    "outDir": "dist/ngx-timeago",
+    "sourceMap": false,
     "declaration": true,
-    "module": "es2015",
+    "module": "ES2022",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "ES2022",
     "lib": [
-      "es2017",
+      "ES2022",
       "dom"
     ]
   },
-  "files": [
-    "lib/src/language-strings/index.ts"
-  ]
+  "include": [
+    "lib/src/language-strings/*.ts"
+  ],
 }

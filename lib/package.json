@@ -26,5 +26,8 @@
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish --ignore-scripts && semantic-release post"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    "./language-strings/": "./language-strings/"
+  }
 }

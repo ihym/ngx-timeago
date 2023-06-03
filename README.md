@@ -22,10 +22,11 @@ npm install ngx-timeago --save
 
 Choose the version corresponding to your Angular version:
 
-| Angular       | ngx-timeago        |
-| ------------- | -------------------|
-| 10            | 2.x+               |
-| 6,7,8,9       | 1.x+               |
+| Angular           | ngx-timeago        |
+| ----------------- | ------------------ |
+| 16                | 3.x+               |
+| 10,11,12,13,14,15 | 2.x+               |
+| 6,7,8,9           | 1.x+               |
 
 ## Usage
 

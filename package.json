@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build:demo": "ng build ngx-timeago-demo --base-href=https://ihym.github.io/ngx-timeago/",
-    "build:lib": "ng build ngx-timeago && yarn run lib:compile:locales",
+    "build:lib": "ng build ngx-timeago && npm run lib:compile:locales",
     "lib:compile:locales": "tsc --project tsconfig.locales.json",
     "ng": "ng",
     "start": "ng serve",
@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "bootstrap": "4.5.2",
+    "ngx-timeago": "file:dist/ngx-timeago",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

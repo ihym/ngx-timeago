@@ -3,12 +3,12 @@
     <mat-card-title>Custom formatter & intl</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="clearfix w-100 align-text-baseline">
-      <strong class="float-left" timeago [date]="date" [live]="live"></strong>
-      <div class="float-right">
-        <mat-checkbox color="primary" class="ml-3" [(ngModel)]="live">Live</mat-checkbox>      
+    <div class="d-flex justify-content-between">
+      <strong class="mat-body-strong font-weight-bold" timeago [date]="date" [live]="live"></strong>
+      <div class="d-flex flex-column align-items-end">
+        <mat-checkbox color="primary" class="ml-3" [(ngModel)]="live">Live</mat-checkbox>
         <br>
-        <mat-form-field class="float-right" style="width: 70px;">
+        <mat-form-field class="" style="width: 140px;">
           <mat-select [value]="lang" (valueChange)="setLang($event)">
             <mat-option value="en">en</mat-option>
             <mat-option value="en-short">en-short</mat-option>

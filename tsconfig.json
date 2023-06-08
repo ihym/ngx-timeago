@@ -21,7 +21,11 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-timeago": [ "./dist/ngx-timeago" ],
+      "ngx-timeago/*": [ "./dist/ngx-timeago/*" ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

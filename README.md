@@ -216,7 +216,7 @@ To run the demo, do the following steps:
 ```bash
 $ npm install
 $ npm run build:lib
-$ npm start dev
+$ npm start
 ```
 
 ***

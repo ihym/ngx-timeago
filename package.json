@@ -44,7 +44,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^16.0.0",
     "typescript": "~5.0.2",
-    "webpack-bundle-analyzer": "3.8.0"
+    "webpack-bundle-analyzer": "4.9.0"
   },
   "config": {
     "commitizen": {

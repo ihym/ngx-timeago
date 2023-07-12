@@ -10,7 +10,7 @@ export type StringOrFn = ((value: number, millisDelta:  number) => string) | str
 
 export type NumberArray = [ string, string, string, string, string, string, string, string, string, string ];
 
-const defaultFormattter = function(then: number): {value: number, unit: Unit, suffix: Suffix} {
+const defaultFormatter = function(then: number): {value: number, unit: Unit, suffix: Suffix} {
   const now = Date.now();
   const seconds = Math.round(Math.abs(now - then) / 1000);
   const suffix: Suffix = then < now ? 'ago' : 'from now';
@@ -40,7 +40,7 @@ export abstract class TimeagoFormatter {
 @Injectable()
 export class TimeagoDefaultFormatter extends TimeagoFormatter {
   format(then: number): string {
-    const {suffix, value, unit} = defaultFormattter(then);
+    const {suffix, value, unit} = defaultFormatter(then);
     return this.parse(value, unit, suffix);
   }
 
@@ -59,7 +59,7 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
   }
 
   format(then: number): string {
-    const {suffix, value, unit} = defaultFormattter(then);
+    const {suffix, value, unit} = defaultFormatter(then);
     return this.parse(value, unit, suffix, Date.now(), then);
   }
 

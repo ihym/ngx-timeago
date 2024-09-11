@@ -1,4 +1,4 @@
-import {IL10nsStrings} from '../timeago.intl';
+import { IL10nsStrings } from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: 'πριν',
@@ -17,5 +17,3 @@ export const strings: IL10nsStrings = {
   year: 'περίπου ένα χρόνο',
   years: '%d χρόνια',
 };
-
-

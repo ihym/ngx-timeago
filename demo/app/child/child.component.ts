@@ -8,7 +8,7 @@ import { strings as frenchShortStrings } from 'ngx-timeago/language-strings/fr-s
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent {
   date = Date.now() - 55000;
@@ -22,11 +22,20 @@ export class ChildComponent {
   setLang(lang: string) {
     this.lang = lang;
     switch (lang) {
-      case 'en': this.intl.strings = englishStrings; break;
-      case 'en-short': this.intl.strings = englishShortStrings; break;
-      case 'fr': this.intl.strings = frenchStrings; break;
-      case 'fr-short': this.intl.strings = frenchShortStrings; break;
-      default: break;
+      case 'en':
+        this.intl.strings = englishStrings;
+        break;
+      case 'en-short':
+        this.intl.strings = englishShortStrings;
+        break;
+      case 'fr':
+        this.intl.strings = frenchStrings;
+        break;
+      case 'fr-short':
+        this.intl.strings = frenchShortStrings;
+        break;
+      default:
+        break;
     }
     this.intl.changes.next();
   }

@@ -7,15 +7,11 @@ const childRoutes: Routes = [
   {
     path: '',
     component: ChildComponent,
-  }
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(childRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(childRoutes)],
+  exports: [RouterModule],
 })
 export class ChildRoutingModule {}

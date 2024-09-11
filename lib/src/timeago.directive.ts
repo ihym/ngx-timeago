@@ -19,7 +19,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
    * - Input change
    * - Intl change
    * - Clock tick
-  */
+   */
   stateChanges = new Subject<void>();
 
   /** The Date to display. An actual Date object or something that can be fed to new Date. */
@@ -34,7 +34,8 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
         this.clockSubscription.unsubscribe();
         this.clockSubscription = undefined;
       }
-      this.clockSubscription = this.clock.tick(this.date)
+      this.clockSubscription = this.clock
+        .tick(this.date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
     } else {
@@ -53,11 +54,13 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   }
   private _live = true;
 
-  constructor(@Optional() intl: TimeagoIntl,
-              private cd: ChangeDetectorRef,
-              formatter: TimeagoFormatter,
-              element: ElementRef,
-              private clock: TimeagoClock) {
+  constructor(
+    @Optional() intl: TimeagoIntl,
+    private cd: ChangeDetectorRef,
+    formatter: TimeagoFormatter,
+    element: ElementRef,
+    private clock: TimeagoClock,
+  ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }

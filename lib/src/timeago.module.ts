@@ -11,14 +11,8 @@ export interface TimeagoModuleConfig {
 }
 
 @NgModule({
-  declarations: [
-    TimeagoDirective,
-    TimeagoPipe,
-  ],
-  exports: [
-    TimeagoDirective,
-    TimeagoPipe,
-  ],
+  declarations: [TimeagoDirective, TimeagoPipe],
+  exports: [TimeagoDirective, TimeagoPipe],
 })
 export class TimeagoModule {
   /**
@@ -28,9 +22,9 @@ export class TimeagoModule {
     return {
       ngModule: TimeagoModule,
       providers: [
-        config.clock || {provide: TimeagoClock, useClass: TimeagoDefaultClock},
+        config.clock || { provide: TimeagoClock, useClass: TimeagoDefaultClock },
         config.intl || [],
-        config.formatter || {provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter},
+        config.formatter || { provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter },
       ],
     };
   }
@@ -42,9 +36,9 @@ export class TimeagoModule {
     return {
       ngModule: TimeagoModule,
       providers: [
-        config.clock || {provide: TimeagoClock, useClass: TimeagoDefaultClock},
+        config.clock || { provide: TimeagoClock, useClass: TimeagoDefaultClock },
         config.intl || [],
-        config.formatter || {provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter},
+        config.formatter || { provide: TimeagoFormatter, useClass: TimeagoDefaultFormatter },
       ],
     };
   }

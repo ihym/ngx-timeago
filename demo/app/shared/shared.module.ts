@@ -6,14 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  imports: [
-  ],
-  exports: [
-    MatCheckboxModule,
-    MatCardModule,
-    MatSelectModule,
-    FormsModule,
-    CommonModule,
-  ]
+  imports: [],
+  exports: [MatCheckboxModule, MatCardModule, MatSelectModule, FormsModule, CommonModule],
 })
-export class SharedModule { }
+export class SharedModule {}

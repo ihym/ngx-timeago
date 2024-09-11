@@ -14,7 +14,7 @@
             </mat-card-header>
             <mat-card-content>
               <div class="d-flex justify-content-between">
-                <strong class="mat-body-strong font-weight-bold">{{date | timeago:live}}</strong>
+                <strong class="mat-body-strong font-weight-bold">{{ date | timeago: live }}</strong>
                 <div>
                   <mat-checkbox color="primary" [(ngModel)]="live">Live</mat-checkbox>
                 </div>
@@ -24,13 +24,13 @@
           <router-outlet></router-outlet>
         </mat-card-content>
         <mat-card-footer>
-        <mat-card-actions style="justify-content: center">
-          <a href="https://www.npmjs.com/package/ngx-timeago" alt="NPM" title="Install with NPM">
-            <img src="img/npm.svg" style="height:15px; background:transparent;"/>
-          </a>
-          <a href="https://github.com/ihym/ngx-timeago" alt="Source" title="View Source" class="ml-2">
-            <img src="img/octicon.png" style="height:20px; background:transparent;"/>
-          </a>
+          <mat-card-actions style="justify-content: center">
+            <a href="https://www.npmjs.com/package/ngx-timeago" alt="NPM" title="Install with NPM">
+              <img src="img/npm.svg" style="height: 15px; background: transparent" />
+            </a>
+            <a href="https://github.com/ihym/ngx-timeago" alt="Source" title="View Source" class="ml-2">
+              <img src="img/octicon.png" style="height: 20px; background: transparent" />
+            </a>
           </mat-card-actions>
         </mat-card-footer>
       </mat-card>

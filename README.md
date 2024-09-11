@@ -23,7 +23,7 @@ Choose the version corresponding to your Angular version:
 
 | Angular           | ngx-timeago |
 | ----------------- | ----------- |
-| 16                | 3.x+        |
+| >= 16             | 3.x+        |
 | 10,11,12,13,14,15 | 2.x+        |
 | 6,7,8,9           | 1.x+        |
 
@@ -36,6 +36,7 @@ Once installed you need to import the main module into your application module b
 Make sure you only call this method in the root module of your application, most of the time called `AppModule`.
 This method allows you to configure the `TimeagoModule` by specifying a formatter, clock and/or an intl service. You should end up with code similar to this:
 
+##### Module
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -46,6 +47,22 @@ import { TimeagoModule } from 'ngx-timeago';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+```
+
+##### Standalone
+In your `main.ts` file, inside the `importProvidersForm`
+
+```ts
+import { importProvidersFrom } from '@angular/core'
+import { TimeagoModule } from 'ngx-timeago';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(
+      TimeagoModule.forRoot(),
+    ),
+  ]
+})
 ```
 
 ##### SharedModule

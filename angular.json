@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-timeago-demo:build:production"
+              "buildTarget": "ngx-timeago-demo:build:production"
             },
             "development": {
-              "browserTarget": "ngx-timeago-demo:build:development"
+              "buildTarget": "ngx-timeago-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-timeago-demo:build"
+            "buildTarget": "ngx-timeago-demo:build"
           }
         }
       }

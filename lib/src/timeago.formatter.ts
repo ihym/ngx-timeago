@@ -71,7 +71,7 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
       unit = 'day';
     }
     /** create a normalize function for given value */
-    const normalize = this.normalizeFn(value, now - then, this.intl.strings.numbers);
+    const normalize = this.normalizeFn(value, now - then, this.intl.strings.numbers as NumberArray);
 
     /** The eventual return value stored in an array so that the wordSeparator can be used */
     const dateString: string[] = [];
@@ -87,10 +87,10 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
     /** Handle Main number and unit */
     const isPlural = value > 1;
     if (isPlural) {
-      const stringFn: StringOrFn = this.intl.strings[unit + 's'] || this.intl.strings[unit] || '%d ' + unit;
+      const stringFn: StringOrFn = this.intl.strings[`${unit}s`] || this.intl.strings[unit] || '%d ' + unit;
       dateString.push(normalize(stringFn));
     } else {
-      const stringFn: StringOrFn = this.intl.strings[unit] || this.intl.strings[unit + 's'] || '%d ' + unit;
+      const stringFn: StringOrFn = this.intl.strings[unit] || this.intl.strings[`${unit}s`] || '%d ' + unit;
       dateString.push(normalize(stringFn));
     }
 

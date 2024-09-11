@@ -29,7 +29,7 @@ const strings: IL10nsStrings = {
     <div #static timeago [date]="date" [live]="false"></div>
     <div #live timeago [date]="date" [live]="true"></div>
     <div #var timeago [date]="date" [live]="isLive"></div>
-  `,
+    `
 })
 class AppComponent {
   @ViewChild('static') static: ElementRef;
@@ -50,16 +50,17 @@ describe('TimeagoDirective', () => {
     TestBed.configureTestingModule({
       imports: [
         TimeagoModule.forRoot({
-          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
-        }),
+          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
+        })
       ],
       providers: [TimeagoIntl],
-      declarations: [AppComponent],
+      declarations: [AppComponent]
     });
     clock = TestBed.get(TimeagoClock);
     formatter = TestBed.get(TimeagoFormatter);
     intl = TestBed.get(TimeagoIntl);
     intl.strings = { ...strings };
+
   });
 
   afterEach(() => {

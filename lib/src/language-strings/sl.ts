@@ -1,6 +1,6 @@
-import { IL10nsStrings } from '../timeago.intl';
+import {IL10nsStrings} from '../timeago.intl';
 
-function numpf(n, a) {
+function numpf (n, a) {
   return a[n % 100 === 1 ? 1 : n % 100 === 2 ? 2 : n % 100 === 3 || n % 100 === 4 ? 3 : 0];
 }
 
@@ -35,3 +35,5 @@ export const strings: IL10nsStrings = {
   },
   wordSeparator: ' ',
 };
+
+

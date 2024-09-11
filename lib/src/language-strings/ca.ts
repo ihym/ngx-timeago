@@ -1,11 +1,11 @@
-import { IL10nsStrings } from '../timeago.intl';
+import {IL10nsStrings} from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: 'fa',
-  prefixFromNow: "d'aqui a",
+  prefixFromNow: 'd\'aqui a',
   suffixAgo: null,
   suffixFromNow: null,
-  seconds: "menys d'1 minut",
+  seconds: 'menys d\'1 minut',
   minute: '1 minut',
   minutes: 'uns %d minuts',
   hour: '1 hora',
@@ -17,3 +17,5 @@ export const strings: IL10nsStrings = {
   year: 'aproximadament un any',
   years: '%d anys',
 };
+
+

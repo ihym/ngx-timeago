@@ -8,7 +8,12 @@
     "module": "ES2022",
     "moduleResolution": "node",
     "target": "ES2022",
-    "lib": ["ES2022", "dom"]
+    "lib": [
+      "ES2022",
+      "dom"
+    ]
   },
-  "include": ["lib/src/language-strings/*.ts"]
+  "include": [
+    "lib/src/language-strings/*.ts"
+  ],
 }

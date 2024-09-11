@@ -1,4 +1,4 @@
-import { IL10nsStrings } from '../timeago.intl';
+import {IL10nsStrings} from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: '',
@@ -18,3 +18,5 @@ export const strings: IL10nsStrings = {
   years: '約 %d 年',
   wordSeparator: '',
 };
+
+

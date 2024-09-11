@@ -1,6 +1,6 @@
-import { IL10nsStrings } from '../timeago.intl';
+import {IL10nsStrings} from '../timeago.intl';
 
-function numpf(n, f, s, t) {
+function numpf (n, f, s, t) {
   var n10;
   n10 = n % 10;
   if (n10 === 1 && (n === 1 || n > 20)) {
@@ -43,3 +43,5 @@ export const strings: IL10nsStrings = {
   },
   wordSeparator: ' ',
 };
+
+

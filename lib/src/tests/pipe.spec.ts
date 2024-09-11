@@ -7,7 +7,7 @@ import {
   TimeagoPipe,
   TimeagoIntl,
   TimeagoCustomFormatter,
-  IL10nsStrings,
+  IL10nsStrings
 } from '../public_api';
 
 const strings: IL10nsStrings = {
@@ -31,24 +31,29 @@ const strings: IL10nsStrings = {
 };
 
 class FakeChangeDetectorRef extends ChangeDetectorRef {
-  markForCheck(): void {}
+  markForCheck(): void {
+  }
 
-  detach(): void {}
+  detach(): void {
+  }
 
-  detectChanges(): void {}
+  detectChanges(): void {
+  }
 
-  checkNoChanges(): void {}
+  checkNoChanges(): void {
+  }
 
-  reattach(): void {}
+  reattach(): void {
+  }
 }
 
 @Injectable()
 @Component({
   selector: 'app-root',
   template: `
-    <div #static>{{ date | timeago: false }}</div>
-    <div #live>{{ date | timeago: true }}</div>
-    <div #var>{{ date | timeago: isLive }}</div>
+    <div #static>{{date | timeago:false}}</div>
+    <div #live>{{date | timeago:true}}</div>
+    <div #var>{{date | timeago:isLive}}</div>
   `,
 })
 class AppComponent {
@@ -72,11 +77,11 @@ describe('TimeagoPipe', () => {
     TestBed.configureTestingModule({
       imports: [
         TimeagoModule.forRoot({
-          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
-        }),
+          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
+        })
       ],
       providers: [TimeagoIntl],
-      declarations: [AppComponent],
+      declarations: [AppComponent]
     });
     date = Date.now() - 1000;
     clock = TestBed.get(TimeagoClock);

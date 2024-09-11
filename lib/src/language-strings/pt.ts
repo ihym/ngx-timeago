@@ -1,4 +1,4 @@
-import { IL10nsStrings } from '../timeago.intl';
+import {IL10nsStrings} from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   suffixAgo: 'atrás',
@@ -15,3 +15,5 @@ export const strings: IL10nsStrings = {
   year: 'cerca de um ano',
   years: '%d anos',
 };
+
+

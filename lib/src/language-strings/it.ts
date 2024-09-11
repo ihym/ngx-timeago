@@ -1,4 +1,4 @@
-import {IL10nsStrings} from '../timeago.intl';
+import { IL10nsStrings } from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   suffixAgo: 'fa',
@@ -6,7 +6,7 @@ export const strings: IL10nsStrings = {
   seconds: 'meno di un minuto',
   minute: 'circa un minuto',
   minutes: '%d minuti',
-  hour: 'circa un\'ora',
+  hour: "circa un'ora",
   hours: 'circa %d ore',
   day: 'un giorno',
   days: '%d giorni',
@@ -15,5 +15,3 @@ export const strings: IL10nsStrings = {
   year: 'circa un anno',
   years: '%d anni',
 };
-
-

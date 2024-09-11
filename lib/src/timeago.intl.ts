@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { StringOrFn, NumberArray } from './timeago.formatter';
+import { NumberArray, StringOrFn } from './timeago.formatter';
 
 export interface IL10nsStrings {
   prefixAgo?: StringOrFn;
@@ -23,7 +23,7 @@ export interface IL10nsStrings {
   years?: StringOrFn;
   wordSeparator?: string;
   numbers?: NumberArray;
-};
+}
 
 /**
  * To modify the text displayed, create a new instance of TimeagoIntl and
@@ -31,7 +31,6 @@ export interface IL10nsStrings {
  */
 @Injectable()
 export class TimeagoIntl {
-
   strings: IL10nsStrings;
 
   /**

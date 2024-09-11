@@ -16,7 +16,7 @@ export function dateParser(date: any): Date {
   if (parts === null || parts.length <= 2) {
     return parsed;
   } else {
-    const [firstP, secondP, ...restPs] = parts.map(x => parseInt(x, 10));
+    const [firstP, secondP, ...restPs] = parts.map((x) => parseInt(x, 10));
     return new Date(Date.UTC(firstP, secondP - 1, ...restPs));
   }
 }

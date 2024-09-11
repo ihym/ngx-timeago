@@ -7,8 +7,8 @@
       <strong class="mat-body-strong font-weight-bold" timeago [date]="date" [live]="live"></strong>
       <div class="d-flex flex-column align-items-end">
         <mat-checkbox color="primary" class="ml-3" [(ngModel)]="live">Live</mat-checkbox>
-        <br>
-        <mat-form-field class="" style="width: 140px;">
+        <br />
+        <mat-form-field class="" style="width: 140px">
           <mat-select [value]="lang" (valueChange)="setLang($event)">
             <mat-option value="en">en</mat-option>
             <mat-option value="en-short">en-short</mat-option>

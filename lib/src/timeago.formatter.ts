@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TimeagoIntl } from './timeago.intl';
-import { MINUTE, HOUR, DAY, WEEK, MONTH, YEAR } from './util';
+import { DAY, HOUR, MINUTE, MONTH, WEEK, YEAR } from './util';
 
 export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 
@@ -10,7 +10,7 @@ export type StringOrFn = ((value: number, millisDelta: number) => string) | stri
 
 export type NumberArray = [string, string, string, string, string, string, string, string, string, string];
 
-const defaultFormattter = function (then: number): { value: number; unit: Unit; suffix: Suffix } {
+const defaultFormatter = function (then: number): { value: number; unit: Unit; suffix: Suffix } {
   const now = Date.now();
   const seconds = Math.round(Math.abs(now - then) / 1000);
   const suffix: Suffix = then < now ? 'ago' : 'from now';
@@ -19,16 +19,16 @@ const defaultFormattter = function (then: number): { value: number; unit: Unit; 
     seconds < MINUTE
       ? [Math.round(seconds), 'second']
       : seconds < HOUR
-        ? [Math.round(seconds / MINUTE), 'minute']
-        : seconds < DAY
-          ? [Math.round(seconds / HOUR), 'hour']
-          : seconds < WEEK
-            ? [Math.round(seconds / DAY), 'day']
-            : seconds < MONTH
-              ? [Math.round(seconds / WEEK), 'week']
-              : seconds < YEAR
-                ? [Math.round(seconds / MONTH), 'month']
-                : [Math.round(seconds / YEAR), 'year'];
+      ? [Math.round(seconds / MINUTE), 'minute']
+      : seconds < DAY
+      ? [Math.round(seconds / HOUR), 'hour']
+      : seconds < WEEK
+      ? [Math.round(seconds / DAY), 'day']
+      : seconds < MONTH
+      ? [Math.round(seconds / WEEK), 'week']
+      : seconds < YEAR
+      ? [Math.round(seconds / MONTH), 'month']
+      : [Math.round(seconds / YEAR), 'year'];
 
   return { value, unit, suffix };
 };
@@ -40,7 +40,7 @@ export abstract class TimeagoFormatter {
 @Injectable()
 export class TimeagoDefaultFormatter extends TimeagoFormatter {
   format(then: number): string {
-    const { suffix, value, unit } = defaultFormattter(then);
+    const { suffix, value, unit } = defaultFormatter(then);
     return this.parse(value, unit, suffix);
   }
 
@@ -59,7 +59,7 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
   }
 
   format(then: number): string {
-    const { suffix, value, unit } = defaultFormattter(then);
+    const { suffix, value, unit } = defaultFormatter(then);
     return this.parse(value, unit, suffix, Date.now(), then);
   }
 
@@ -70,7 +70,6 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
       value = days;
       unit = 'day';
     }
-
     /** create a normalize function for given value */
     const normalize = this.normalizeFn(value, now - then, this.intl.strings.numbers);
 

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
 import { strings as englishStrings } from 'ngx-timeago/language-strings/en';
 import { strings as englishShortStrings } from 'ngx-timeago/language-strings/en-short';
@@ -13,11 +13,9 @@ import { strings as frenchShortStrings } from 'ngx-timeago/language-strings/fr-s
 export class ChildComponent {
   date = Date.now() - 55000;
   live = true;
-  lang = 'en';
+  lang: string;
 
-  constructor(private intl: TimeagoIntl) {
-    this.setLang(this.lang);
-  }
+  constructor(private intl: TimeagoIntl) {}
 
   setLang(lang: string) {
     this.lang = lang;

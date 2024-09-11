@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { StringOrFn, NumberArray } from './timeago.formatter';
+import { strings as englishStrings } from './language-strings/en';
+import { NumberArray, StringOrFn } from './timeago.formatter';
 
 export interface IL10nsStrings {
   prefixAgo?: StringOrFn;
@@ -31,7 +32,7 @@ export interface IL10nsStrings {
  */
 @Injectable()
 export class TimeagoIntl {
-  strings: IL10nsStrings;
+  strings: IL10nsStrings = englishStrings;
 
   /**
    * Stream that emits whenever the l10n strings are changed

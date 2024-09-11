@@ -1,8 +1,8 @@
-import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
-import { TimeagoDirective } from './timeago.directive';
-import { TimeagoPipe } from './timeago.pipe';
+import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { TimeagoClock, TimeagoDefaultClock } from './timeago.clock';
-import { TimeagoFormatter, TimeagoDefaultFormatter } from './timeago.formatter';
+import { TimeagoDirective } from './timeago.directive';
+import { TimeagoDefaultFormatter, TimeagoFormatter } from './timeago.formatter';
+import { TimeagoPipe } from './timeago.pipe';
 
 export interface TimeagoModuleConfig {
   clock?: Provider;

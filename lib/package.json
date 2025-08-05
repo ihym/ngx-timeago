@@ -23,9 +23,6 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "scripts": {
-    "semantic-release": "semantic-release pre && npm publish --ignore-scripts && semantic-release post"
-  },
   "sideEffects": false,
   "exports": {
     "./language-strings/": "./language-strings/"

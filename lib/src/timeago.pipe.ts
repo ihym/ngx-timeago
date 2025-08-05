@@ -1,4 +1,11 @@
-import { Injectable, OnDestroy, Pipe, PipeTransform, Optional, ChangeDetectorRef } from '@angular/core';
+import {
+  Injectable,
+  OnDestroy,
+  Pipe,
+  PipeTransform,
+  Optional,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { TimeagoClock } from './timeago.clock';
 import { TimeagoFormatter } from './timeago.formatter';
@@ -8,9 +15,9 @@ import { filter } from 'rxjs/operators';
 
 @Injectable()
 @Pipe({
-    name: 'timeago',
-    pure: false,
-    standalone: false
+  name: 'timeago',
+  pure: false,
+  standalone: false,
 })
 export class TimeagoPipe implements PipeTransform, OnDestroy {
   private intlSubscription: Subscription;
@@ -25,13 +32,15 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
    * - Input change
    * - Intl change
    * - Clock tick
-  */
+   */
   stateChanges = new Subject<void>();
 
-  constructor(@Optional() intl: TimeagoIntl,
+  constructor(
+    @Optional() intl: TimeagoIntl,
     cd: ChangeDetectorRef,
     formatter: TimeagoFormatter,
-    private clock: TimeagoClock) {
+    private clock: TimeagoClock
+  ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
@@ -45,9 +54,7 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
     const _date = dateParser(date).valueOf();
     let _live: boolean;
 
-    _live = isDefined(args[0])
-      ? coerceBooleanProperty(args[0])
-      : this.live;
+    _live = isDefined(args[0]) ? coerceBooleanProperty(args[0]) : this.live;
 
     if (this.date === _date && this.live === _live) {
       return this.value;
@@ -61,12 +68,15 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
         this.clockSubscription.unsubscribe();
         this.clockSubscription = undefined;
       }
-      this.clockSubscription = this.clock.tick(this.date)
+      this.clockSubscription = this.clock
+        .tick(this.date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
       this.stateChanges.next();
     } else {
-      throw new SyntaxError(`Wrong parameter in TimeagoPipe. Expected a valid date, received: ${date}`);
+      throw new SyntaxError(
+        `Wrong parameter in TimeagoPipe. Expected a valid date, received: ${date}`
+      );
     }
 
     return this.value;

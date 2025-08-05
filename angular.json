@@ -17,9 +17,7 @@
               "base": "dist/demo"
             },
             "index": "demo/index.html",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "demo/tsconfig.app.json",
             "assets": [
               {
@@ -33,10 +31,7 @@
                 "output": "/"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "demo/styles.css"
-            ],
+            "styles": ["@angular/material/prebuilt-themes/deeppurple-amber.css", "demo/styles.css"],
             "scripts": [],
             "browser": "demo/main.ts"
           },
@@ -98,10 +93,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "lib/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

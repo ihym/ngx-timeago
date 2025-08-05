@@ -1,6 +1,25 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Injectable, ViewChild } from '@angular/core';
-import { TestBed, fakeAsync, tick, discardPeriodicTasks, ComponentFixture } from '@angular/core/testing';
-import { TimeagoModule, TimeagoClock, TimeagoFormatter, IL10nsStrings, TimeagoIntl, TimeagoCustomFormatter } from '../public_api';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Injectable,
+  ViewChild,
+} from '@angular/core';
+import {
+  TestBed,
+  fakeAsync,
+  tick,
+  discardPeriodicTasks,
+  ComponentFixture,
+} from '@angular/core/testing';
+import {
+  TimeagoModule,
+  TimeagoClock,
+  TimeagoFormatter,
+  IL10nsStrings,
+  TimeagoIntl,
+  TimeagoCustomFormatter,
+} from '../public_api';
 
 const strings: IL10nsStrings = {
   prefixAgo: null,
@@ -24,13 +43,13 @@ const strings: IL10nsStrings = {
 
 @Injectable()
 @Component({
-    selector: 'app-root',
-    template: `
+  selector: 'app-root',
+  template: `
     <div #static timeago [date]="date" [live]="false"></div>
     <div #live timeago [date]="date" [live]="true"></div>
     <div #var timeago [date]="date" [live]="isLive"></div>
-    `,
-    standalone: false
+  `,
+  standalone: false,
 })
 class AppComponent {
   @ViewChild('static') static: ElementRef;
@@ -51,17 +70,16 @@ describe('TimeagoDirective', () => {
     TestBed.configureTestingModule({
       imports: [
         TimeagoModule.forRoot({
-          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
-        })
+          formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+        }),
       ],
       providers: [TimeagoIntl],
-      declarations: [AppComponent]
+      declarations: [AppComponent],
     });
     clock = TestBed.inject(TimeagoClock);
     formatter = TestBed.inject(TimeagoFormatter);
     intl = TestBed.inject(TimeagoIntl);
     intl.strings = { ...strings };
-
   });
 
   afterEach(() => {
@@ -82,15 +100,23 @@ describe('TimeagoDirective', () => {
     fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual('1 second ago');
-    expect(fixture.debugElement.componentInstance.live.nativeElement.innerHTML).toEqual('1 second ago');
+    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
+    expect(fixture.debugElement.componentInstance.live.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
 
     tick(1000);
 
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual('1 second ago');
-    expect(fixture.debugElement.componentInstance.live.nativeElement.innerHTML).toEqual('2 seconds ago');
+    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
+    expect(fixture.debugElement.componentInstance.live.nativeElement.innerHTML).toEqual(
+      '2 seconds ago'
+    );
 
     discardPeriodicTasks();
   }));
@@ -99,13 +125,17 @@ describe('TimeagoDirective', () => {
     fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual('1 second ago');
+    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
 
     intl.strings.second = '%d testSecond';
     intl.changes.next();
 
     fixture.detectChanges();
-    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual('1 testSecond ago');
+    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual(
+      '1 testSecond ago'
+    );
   });
 
   it('should listen to date changes', () => {
@@ -115,28 +145,38 @@ describe('TimeagoDirective', () => {
     fixture.componentInstance.date = Date.now() - 2000;
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual('2 seconds ago');
+    expect(fixture.debugElement.componentInstance.static.nativeElement.innerHTML).toEqual(
+      '2 seconds ago'
+    );
   });
 
   it('should listen to live changes', fakeAsync(() => {
     fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual('1 second ago');
+    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
 
     tick(1000);
 
-    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual('1 second ago');
+    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual(
+      '1 second ago'
+    );
 
     fixture.componentInstance.isLive = true;
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual('2 seconds ago');
+    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual(
+      '2 seconds ago'
+    );
 
     tick(1000);
     fixture.detectChanges();
 
-    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual('3 seconds ago');
+    expect(fixture.debugElement.componentInstance.var.nativeElement.innerHTML).toEqual(
+      '3 seconds ago'
+    );
 
     discardPeriodicTasks();
   }));

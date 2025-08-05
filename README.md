@@ -37,9 +37,9 @@ Make sure you only call this method in the root module of your application, most
 This method allows you to configure the `TimeagoModule` by specifying a formatter, clock and/or an intl service. You should end up with code similar to this:
 
 ```ts
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { TimeagoModule } from "ngx-timeago";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   imports: [BrowserModule, TimeagoModule.forRoot()],
@@ -85,10 +85,15 @@ By default, there is no intl service available, as the default formatter doesn't
 You should provide one, if you end up with a formatter that needs it (either TimeagoCustomFormatter which is provided by the lib or your own). The purpose of the intl service is to contain all the necessary i18n strings used by your formatter.
 
 ```ts
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { Timeago, TimeagoIntl, TimeagoFormatter, TimeagoCustomFormatter } from "ngx-timeago";
-import { AppComponent } from "./app";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {
+  Timeago,
+  TimeagoIntl,
+  TimeagoFormatter,
+  TimeagoCustomFormatter,
+} from 'ngx-timeago';
+import { AppComponent } from './app';
 
 export class MyIntl extends TimeagoIntl {
   // do extra stuff here...
@@ -99,7 +104,10 @@ export class MyIntl extends TimeagoIntl {
     BrowserModule,
     TimeagoModule.forRoot({
       intl: { provide: TimeagoIntl, useClass: MyIntl },
-      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+      formatter: {
+        provide: TimeagoFormatter,
+        useClass: TimeagoCustomFormatter,
+      },
     }),
   ],
   bootstrap: [AppComponent],
@@ -112,12 +120,12 @@ There is support for a large number of languages out of the box. This support is
 To use any of the languages provided, you will have to import the language strings and feed them to the intl service.
 
 ```ts
-import { Component } from "@angular/core";
-import { TimeagoIntl } from "ngx-timeago";
-import { strings as englishStrings } from "ngx-timeago/language-strings/en";
+import { Component } from '@angular/core';
+import { TimeagoIntl } from 'ngx-timeago';
+import { strings as englishStrings } from 'ngx-timeago/language-strings/en';
 
 @Component({
-  selector: "app",
+  selector: 'app',
   template: ` <div timeago [date]="1553683912689"></div> `,
 })
 export class AppComponent {
@@ -174,8 +182,8 @@ export class AppModule {}
 The only required method to build your own clock, is `tick` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using your formatter (and intl, if available).
 
 ```ts
-import { TimeagoClock } from "ngx-timeago";
-import { Observable, interval } from "rxjs";
+import { TimeagoClock } from 'ngx-timeago';
+import { Observable, interval } from 'rxjs';
 
 // ticks every 2s
 export class MyClock extends TimeagoClock {

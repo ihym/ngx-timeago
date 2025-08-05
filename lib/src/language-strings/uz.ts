@@ -1,4 +1,4 @@
-import {IL10nsStrings} from '../timeago.intl';
+import { IL10nsStrings } from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: null,
@@ -7,16 +7,24 @@ export const strings: IL10nsStrings = {
   suffixFromNow: null,
   seconds: 'bir necha soniya',
   minute: '1 daqiqa',
-  minutes: function (value) { return '%d daqiqa'; },
+  minutes: function (value) {
+    return '%d daqiqa';
+  },
   hour: '1 soat',
-  hours: function (value) { return '%d soat'; },
+  hours: function (value) {
+    return '%d soat';
+  },
   day: '1 kun',
-  days: function (value) { return '%d kun'; },
+  days: function (value) {
+    return '%d kun';
+  },
   month: '1 oy',
-  months: function (value) { return '%d oy'; },
+  months: function (value) {
+    return '%d oy';
+  },
   year: '1 yil',
-  years: function (value) { return '%d yil'; },
+  years: function (value) {
+    return '%d yil';
+  },
   wordSeparator: ' ',
 };
-
-

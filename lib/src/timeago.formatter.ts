@@ -6,11 +6,22 @@ export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'ye
 
 export type Suffix = 'ago' | 'from now';
 
-export type StringOrFn = ((value: number, millisDelta:  number) => string) | string;
+export type StringOrFn = ((value: number, millisDelta: number) => string) | string;
 
-export type NumberArray = [ string, string, string, string, string, string, string, string, string, string ];
+export type NumberArray = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
 
-const defaultFormattter = function(then: number): {value: number, unit: Unit, suffix: Suffix} {
+const defaultFormattter = function (then: number): { value: number; unit: Unit; suffix: Suffix } {
   const now = Date.now();
   const seconds = Math.round(Math.abs(now - then) / 1000);
   const suffix: Suffix = then < now ? 'ago' : 'from now';
@@ -30,17 +41,17 @@ const defaultFormattter = function(then: number): {value: number, unit: Unit, su
                 ? [Math.round(seconds / MONTH), 'month']
                 : [Math.round(seconds / YEAR), 'year'];
 
-  return {value, unit, suffix};
-}
+  return { value, unit, suffix };
+};
 
 export abstract class TimeagoFormatter {
-  abstract format(then: number): string
+  abstract format(then: number): string;
 }
 
 @Injectable()
 export class TimeagoDefaultFormatter extends TimeagoFormatter {
   format(then: number): string {
-    const {suffix, value, unit} = defaultFormattter(then);
+    const { suffix, value, unit } = defaultFormattter(then);
     return this.parse(value, unit, suffix);
   }
 
@@ -59,7 +70,7 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
   }
 
   format(then: number): string {
-    const {suffix, value, unit} = defaultFormattter(then);
+    const { suffix, value, unit } = defaultFormattter(then);
     return this.parse(value, unit, suffix, Date.now(), then);
   }
 
@@ -88,10 +99,12 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
     /** Handle Main number and unit */
     const isPlural = value > 1;
     if (isPlural) {
-      const stringFn: StringOrFn = this.intl.strings[unit + 's'] || this.intl.strings[unit] || '%d ' + unit;
+      const stringFn: StringOrFn =
+        this.intl.strings[unit + 's'] || this.intl.strings[unit] || '%d ' + unit;
       dateString.push(normalize(stringFn));
     } else {
-      const stringFn: StringOrFn = this.intl.strings[unit] || this.intl.strings[unit + 's'] || '%d ' + unit;
+      const stringFn: StringOrFn =
+        this.intl.strings[unit] || this.intl.strings[unit + 's'] || '%d ' + unit;
       dateString.push(normalize(stringFn));
     }
 
@@ -104,18 +117,20 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
     }
 
     /** join the array into a string and return it */
-    const wordSeparator = typeof this.intl.strings.wordSeparator === 'string' ? this.intl.strings.wordSeparator : ' ';
+    const wordSeparator =
+      typeof this.intl.strings.wordSeparator === 'string' ? this.intl.strings.wordSeparator : ' ';
     return dateString.join(wordSeparator);
   }
 
   /**
    * If the numbers array is present, format numbers with it,
    * otherwise just cast the number to a string and return it
-  */
+   */
   private normalizeNumber(numbers: NumberArray, value: number) {
     return numbers && numbers.length === 10
-      ? String(value).split('')
-          .map((digit: string) => digit.match(/^[0-9]$/) ? numbers[parseInt(digit, 10)] : digit)
+      ? String(value)
+          .split('')
+          .map((digit: string) => (digit.match(/^[0-9]$/) ? numbers[parseInt(digit, 10)] : digit))
           .join('')
       : String(value);
   }
@@ -123,11 +138,11 @@ export class TimeagoCustomFormatter extends TimeagoFormatter {
   /**
    * Take a string or a function that takes number of days and returns a string
    * and provide a uniform API to create string parts
-  */
+   */
   private normalizeFn(value: number, millisDelta: number, numbers?: NumberArray) {
     return (stringOrFn: StringOrFn) =>
       typeof stringOrFn === 'function'
-      ? stringOrFn(value, millisDelta).replace(/%d/g, this.normalizeNumber(numbers, value))
-      : stringOrFn.replace(/%d/g, this.normalizeNumber(numbers, value));
+        ? stringOrFn(value, millisDelta).replace(/%d/g, this.normalizeNumber(numbers, value))
+        : stringOrFn.replace(/%d/g, this.normalizeNumber(numbers, value));
   }
 }

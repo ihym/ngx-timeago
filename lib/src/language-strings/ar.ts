@@ -1,7 +1,19 @@
-import {IL10nsStrings} from '../timeago.intl';
+import { IL10nsStrings } from '../timeago.intl';
 
-function numpf (n, a) {
-  return a[n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5];
+function numpf(n, a) {
+  return a[
+    n === 0
+      ? 0
+      : n === 1
+        ? 1
+        : n === 2
+          ? 2
+          : n % 100 >= 3 && n % 100 <= 10
+            ? 3
+            : n % 100 >= 11
+              ? 4
+              : 5
+  ];
 }
 
 export const strings: IL10nsStrings = {
@@ -50,84 +62,27 @@ export const strings: IL10nsStrings = {
     ]);
   },
   hour: function (value) {
-    return numpf(value, [
-      'أقل من ساعة',
-      'ساعة واحدة',
-      'ساعتين',
-      '%d ساعات',
-      '%d ساعة',
-      '%d ساعة',
-    ]);
+    return numpf(value, ['أقل من ساعة', 'ساعة واحدة', 'ساعتين', '%d ساعات', '%d ساعة', '%d ساعة']);
   },
   hours: function (value) {
-    return numpf(value, [
-      'أقل من ساعة',
-      'ساعة واحدة',
-      'ساعتين',
-      '%d ساعات',
-      '%d ساعة',
-      '%d ساعة',
-    ]);
+    return numpf(value, ['أقل من ساعة', 'ساعة واحدة', 'ساعتين', '%d ساعات', '%d ساعة', '%d ساعة']);
   },
   day: function (value) {
-    return numpf(value, [
-      'أقل من يوم',
-      'يوم واحد',
-      'يومين',
-      '%d أيام',
-      '%d يومًا',
-      '%d يوم',
-    ]);
+    return numpf(value, ['أقل من يوم', 'يوم واحد', 'يومين', '%d أيام', '%d يومًا', '%d يوم']);
   },
   days: function (value) {
-    return numpf(value, [
-      'أقل من يوم',
-      'يوم واحد',
-      'يومين',
-      '%d أيام',
-      '%d يومًا',
-      '%d يوم',
-    ]);
+    return numpf(value, ['أقل من يوم', 'يوم واحد', 'يومين', '%d أيام', '%d يومًا', '%d يوم']);
   },
   month: function (value) {
-    return numpf(value, [
-      'أقل من شهر',
-      'شهر واحد',
-      'شهرين',
-      '%d أشهر',
-      '%d شهرًا',
-      '%d شهر',
-    ]);
+    return numpf(value, ['أقل من شهر', 'شهر واحد', 'شهرين', '%d أشهر', '%d شهرًا', '%d شهر']);
   },
   months: function (value) {
-    return numpf(value, [
-      'أقل من شهر',
-      'شهر واحد',
-      'شهرين',
-      '%d أشهر',
-      '%d شهرًا',
-      '%d شهر',
-    ]);
+    return numpf(value, ['أقل من شهر', 'شهر واحد', 'شهرين', '%d أشهر', '%d شهرًا', '%d شهر']);
   },
   year: function (value) {
-    return numpf(value, [
-      'أقل من عام',
-      'عام واحد',
-      '%d عامين',
-      '%d أعوام',
-      '%d عامًا',
-    ]);
+    return numpf(value, ['أقل من عام', 'عام واحد', '%d عامين', '%d أعوام', '%d عامًا']);
   },
   years: function (value) {
-    return numpf(value, [
-      'أقل من عام',
-      'عام واحد',
-      'عامين',
-      '%d أعوام',
-      '%d عامًا',
-      '%d عام',
-    ]);
+    return numpf(value, ['أقل من عام', 'عام واحد', 'عامين', '%d أعوام', '%d عامًا', '%d عام']);
   },
 };
-
-

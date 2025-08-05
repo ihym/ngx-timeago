@@ -20,12 +20,12 @@ describe('TimeagoClock', () => {
       expect(clock instanceof TimeagoDefaultClock).toBeTruthy();
     });
 
-    it('should complete instantly for differences greater than a day', (() => {
+    it('should complete instantly for differences greater than a day', () => {
       testScheduler.run(({ expectObservable }) => {
         const source = clock.tick(Date.now() - 60 * 60 * 24 * 1000).pipe(map(x => x.toString()));
         const expected = '|';
         expectObservable(source).toBe(expected);
       });
-    }));
+    });
   });
 });

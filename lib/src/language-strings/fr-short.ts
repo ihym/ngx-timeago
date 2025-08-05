@@ -2,8 +2,8 @@ import { IL10nsStrings } from '../timeago.intl';
 
 export const strings: IL10nsStrings = {
   prefixAgo: 'il y a',
-  prefixFromNow: 'd\'ici',
-  seconds: 'moins d\'une minute',
+  prefixFromNow: "d'ici",
+  seconds: "moins d'une minute",
   minute: 'une minute',
   minutes: '%d minutes',
   hour: 'une heure',

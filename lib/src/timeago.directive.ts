@@ -1,4 +1,12 @@
-import { Directive, Input, ElementRef, Optional, OnChanges, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ElementRef,
+  Optional,
+  OnChanges,
+  OnDestroy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { TimeagoClock } from './timeago.clock';
@@ -7,9 +15,9 @@ import { TimeagoIntl } from './timeago.intl';
 import { isDefined, coerceBooleanProperty, dateParser } from './util';
 
 @Directive({
-    selector: '[timeago]',
-    exportAs: 'timeago',
-    standalone: false
+  selector: '[timeago]',
+  exportAs: 'timeago',
+  standalone: false,
 })
 export class TimeagoDirective implements OnChanges, OnDestroy {
   private intlSubscription: Subscription;
@@ -20,7 +28,7 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
    * - Input change
    * - Intl change
    * - Clock tick
-  */
+   */
   stateChanges = new Subject<void>();
 
   /** The Date to display. An actual Date object or something that can be fed to new Date. */
@@ -35,11 +43,14 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
         this.clockSubscription.unsubscribe();
         this.clockSubscription = undefined;
       }
-      this.clockSubscription = this.clock.tick(this.date)
+      this.clockSubscription = this.clock
+        .tick(this.date)
         .pipe(filter(() => this.live, this))
         .subscribe(() => this.stateChanges.next());
     } else {
-      throw new SyntaxError(`Wrong parameter in TimeagoDirective. Expected a valid date, received: ${date}`);
+      throw new SyntaxError(
+        `Wrong parameter in TimeagoDirective. Expected a valid date, received: ${date}`
+      );
     }
   }
   private _date: number;
@@ -54,11 +65,13 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
   }
   private _live = true;
 
-  constructor(@Optional() intl: TimeagoIntl,
-              private cd: ChangeDetectorRef,
-              formatter: TimeagoFormatter,
-              element: ElementRef,
-              private clock: TimeagoClock) {
+  constructor(
+    @Optional() intl: TimeagoIntl,
+    private cd: ChangeDetectorRef,
+    formatter: TimeagoFormatter,
+    element: ElementRef,
+    private clock: TimeagoClock
+  ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }

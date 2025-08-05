@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+*.tgz
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Logs
+*.log
+
+# Generated files
+*.d.ts
+
+# Compiled output
+/tmp
+/out-tsc
+
+# Language string files (generated)
+lib/language-strings/**/*.js
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

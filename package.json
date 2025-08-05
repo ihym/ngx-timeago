@@ -11,7 +11,11 @@
     "test": "ng test",
     "tdd": "ng test --watch",
     "commit": "git-cz",
-    "analyze": "npm run build:lib && npm run build:demo  -- --stats-json && webpack-bundle-analyzer dist/demo/stats.json"
+    "analyze": "npm run build:lib && npm run build:demo  -- --stats-json && webpack-bundle-analyzer dist/demo/stats.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:lib": "prettier --write \"lib/**/*.{ts,html,scss,css,json}\"",
+    "format:demo": "prettier --write \"demo/**/*.{ts,html,scss,css,json}\""
   },
   "dependencies": {
     "@angular/animations": "^20.1.4",
@@ -43,6 +47,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^20.1.0",
+    "prettier": "^3.6.2",
     "typescript": "~5.8.3",
     "webpack-bundle-analyzer": "3.8.0"
   },

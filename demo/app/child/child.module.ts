@@ -8,22 +8,19 @@ import { FooComponent } from './foo/foo.component';
 import { ChildRoutingModule } from './child-routing.module';
 
 export class MyIntl extends TimeagoIntl {
-// do extra stuff here...
+  // do extra stuff here...
 }
 
 @NgModule({
-  declarations: [
-    ChildComponent,
-    FooComponent,
-  ],
+  declarations: [ChildComponent, FooComponent],
   imports: [
     SharedModule,
     ChildRoutingModule,
     TimeagoModule.forChild({
       intl: { provide: TimeagoIntl, useClass: MyIntl },
-      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter }
+      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
     }),
   ],
-  bootstrap: [ChildComponent]
+  bootstrap: [ChildComponent],
 })
-export class ChildModule { }
+export class ChildModule {}

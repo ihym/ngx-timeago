@@ -9,9 +9,10 @@ describe('TimeagoClock', () => {
 
   describe('Default', () => {
     let clock: TimeagoDefaultClock;
+    const platformId = 'browser';
 
     beforeEach(() => {
-      clock = new TimeagoDefaultClock();
+      clock = new TimeagoDefaultClock(platformId);
     });
 
     it('is defined', () => {

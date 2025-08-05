@@ -24,12 +24,13 @@ const strings: IL10nsStrings = {
 
 @Injectable()
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'app-root',
+    template: `
     <div #static timeago [date]="date" [live]="false"></div>
     <div #live timeago [date]="date" [live]="true"></div>
     <div #var timeago [date]="date" [live]="isLive"></div>
-    `
+    `,
+    standalone: false
 })
 class AppComponent {
   @ViewChild('static') static: ElementRef;
@@ -56,9 +57,9 @@ describe('TimeagoDirective', () => {
       providers: [TimeagoIntl],
       declarations: [AppComponent]
     });
-    clock = TestBed.get(TimeagoClock);
-    formatter = TestBed.get(TimeagoFormatter);
-    intl = TestBed.get(TimeagoIntl);
+    clock = TestBed.inject(TimeagoClock);
+    formatter = TestBed.inject(TimeagoFormatter);
+    intl = TestBed.inject(TimeagoIntl);
     intl.strings = { ...strings };
 
   });

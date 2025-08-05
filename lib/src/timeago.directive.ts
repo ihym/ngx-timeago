@@ -7,8 +7,9 @@ import { TimeagoIntl } from './timeago.intl';
 import { isDefined, coerceBooleanProperty, dateParser } from './util';
 
 @Directive({
-  selector: '[timeago]',
-  exportAs: 'timeago',
+    selector: '[timeago]',
+    exportAs: 'timeago',
+    standalone: false
 })
 export class TimeagoDirective implements OnChanges, OnDestroy {
   private intlSubscription: Subscription;

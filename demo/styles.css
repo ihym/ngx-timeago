@@ -1,4 +1,4 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* Angular Material theme imported via angular.json */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 .header-image {

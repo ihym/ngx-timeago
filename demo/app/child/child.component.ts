@@ -6,9 +6,10 @@ import { strings as frenchStrings } from 'ngx-timeago/language-strings/fr';
 import { strings as frenchShortStrings } from 'ngx-timeago/language-strings/fr-short';
 
 @Component({
-  selector: 'app-child',
-  templateUrl: './child.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-child',
+    templateUrl: './child.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChildComponent {
   date = Date.now() - 55000;

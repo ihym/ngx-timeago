@@ -49,12 +49,13 @@ class FakeChangeDetectorRef extends ChangeDetectorRef {
 
 @Injectable()
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'app-root',
+    template: `
     <div #static>{{date | timeago:false}}</div>
     <div #live>{{date | timeago:true}}</div>
     <div #var>{{date | timeago:isLive}}</div>
   `,
+    standalone: false
 })
 class AppComponent {
   @ViewChild('static') static: ElementRef;
@@ -84,9 +85,9 @@ describe('TimeagoPipe', () => {
       declarations: [AppComponent]
     });
     date = Date.now() - 1000;
-    clock = TestBed.get(TimeagoClock);
-    formatter = TestBed.get(TimeagoFormatter);
-    intl = TestBed.get(TimeagoIntl);
+    clock = TestBed.inject(TimeagoClock);
+    formatter = TestBed.inject(TimeagoFormatter);
+    intl = TestBed.inject(TimeagoIntl);
     intl.strings = { ...strings };
     ref = new FakeChangeDetectorRef();
   });

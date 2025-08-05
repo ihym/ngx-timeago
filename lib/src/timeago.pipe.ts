@@ -8,8 +8,9 @@ import { filter } from 'rxjs/operators';
 
 @Injectable()
 @Pipe({
-  name: 'timeago',
-  pure: false, // required to update the value when stateChanges emits
+    name: 'timeago',
+    pure: false,
+    standalone: false
 })
 export class TimeagoPipe implements PipeTransform, OnDestroy {
   private intlSubscription: Subscription;

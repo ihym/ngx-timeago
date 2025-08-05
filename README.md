@@ -23,7 +23,8 @@ Choose the version corresponding to your Angular version:
 
 | Angular           | ngx-timeago |
 | ----------------- | ----------- |
-| 16                | 3.x+        |
+| 20                | 4.x+        |
+| 16,17,18,19       | 3.x+        |
 | 10,11,12,13,14,15 | 2.x+        |
 | 6,7,8,9           | 1.x+        |
 
@@ -122,7 +123,7 @@ To use any of the languages provided, you will have to import the language strin
 ```ts
 import { Component } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
-import { strings as englishStrings } from 'ngx-timeago/language-strings/en';
+import { strings as englishStrings } from 'ngx-timeago/language-strings/en.js';
 
 @Component({
   selector: 'app',

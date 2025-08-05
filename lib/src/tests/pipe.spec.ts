@@ -5,6 +5,7 @@ import {
   Injectable,
   ViewChild,
   ElementRef,
+  NgZone,
 } from '@angular/core';
 import { TestBed, fakeAsync, tick, discardPeriodicTasks } from '@angular/core/testing';
 import {
@@ -75,7 +76,7 @@ describe('TimeagoPipe', () => {
   let pipe: TimeagoPipe;
   let ref: ChangeDetectorRef;
   let date: number;
-
+  let ngZone: NgZone;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -92,6 +93,7 @@ describe('TimeagoPipe', () => {
     intl = TestBed.inject(TimeagoIntl);
     intl.strings = { ...strings };
     ref = new FakeChangeDetectorRef();
+    ngZone = TestBed.inject(NgZone);
   });
 
   afterEach(() => {
@@ -103,7 +105,7 @@ describe('TimeagoPipe', () => {
   });
 
   it('is defined', () => {
-    pipe = new TimeagoPipe(intl, ref, formatter, clock);
+    pipe = new TimeagoPipe(intl, ref, formatter, clock, ngZone);
 
     expect(TimeagoPipe).toBeDefined();
     expect(pipe).toBeDefined();
@@ -111,13 +113,13 @@ describe('TimeagoPipe', () => {
   });
 
   it('should render a formatted timestamp', () => {
-    pipe = new TimeagoPipe(intl, ref, formatter, clock);
+    pipe = new TimeagoPipe(intl, ref, formatter, clock, ngZone);
 
     expect(pipe.transform(date)).toEqual('1 second ago');
   });
 
   it('should call markForCheck when it formats a timestamp', () => {
-    pipe = new TimeagoPipe(intl, ref, formatter, clock);
+    pipe = new TimeagoPipe(intl, ref, formatter, clock, ngZone);
 
     spyOn(ref, 'markForCheck').and.callThrough();
 
@@ -126,7 +128,7 @@ describe('TimeagoPipe', () => {
   });
 
   it('should throw if you dont give a valid date', () => {
-    pipe = new TimeagoPipe(intl, ref, formatter, clock);
+    pipe = new TimeagoPipe(intl, ref, formatter, clock, ngZone);
 
     expect(() => {
       pipe.transform(null);

@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnDestroy,
   ChangeDetectorRef,
+  NgZone,
 } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -67,17 +68,20 @@ export class TimeagoDirective implements OnChanges, OnDestroy {
 
   constructor(
     @Optional() intl: TimeagoIntl,
-    private cd: ChangeDetectorRef,
     formatter: TimeagoFormatter,
     element: ElementRef,
-    private clock: TimeagoClock
+    private cd: ChangeDetectorRef,
+    private clock: TimeagoClock,
+    private ngZone: NgZone
   ) {
     if (intl) {
       this.intlSubscription = intl.changes.subscribe(() => this.stateChanges.next());
     }
-    this.stateChanges.subscribe(() => {
-      this.setContent(element.nativeElement, formatter.format(this.date));
-      this.cd.markForCheck();
+    this.ngZone.runOutsideAngular(() => {
+      this.stateChanges.subscribe(() => {
+        this.setContent(element.nativeElement, formatter.format(this.date));
+        this.ngZone.run(() => this.cd.markForCheck());
+      });
     });
   }
 

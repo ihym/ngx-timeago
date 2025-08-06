@@ -38,7 +38,7 @@
     "@angular/cli": "~20.1.4",
     "@angular/compiler-cli": "^20.1.4",
     "@types/jasmine": "~4.3.0",
-    "commitizen": "4.1.2",
+    "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.2.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

@@ -13,10 +13,10 @@ Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
 
 ## Installation
 
-First you need to install the npm module:
+First you need to install the package:
 
 ```sh
-npm install ngx-timeago --save
+pnpm add ngx-timeago
 ```
 
 Choose the version corresponding to your Angular version:
@@ -216,9 +216,9 @@ export class AppModule {}
 To run the demo, do the following steps:
 
 ```bash
-$ npm install
-$ npm run build:lib
-$ npm start
+$ pnpm install
+$ pnpm build:lib
+$ pnpm start
 ```
 
 ---

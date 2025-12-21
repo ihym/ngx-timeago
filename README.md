@@ -1,14 +1,17 @@
 # ngx-timeago [![npm version](https://badge.fury.io/js/ngx-timeago.svg)](https://badge.fury.io/js/ngx-timeago) [![npm](https://img.shields.io/npm/dm/ngx-timeago.svg?maxAge=2592000)](https://www.npmjs.com/package/ngx-timeago) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
-Live updating timestamps in Angular 6+.
+Live updating timestamps in Angular.
+
+✨ **Now with full standalone component support!** Use with NgModules or standalone components.
 
 [https://ihym.github.io/ngx-timeago/](https://ihym.github.io/ngx-timeago/)
 
 Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
 
 - [Installation](#installation)
+- [Setup](#setup)
 - [Usage](#usage)
-- [API](#api)
+- [Configuration](#configuration)
 - [Contribute](#contribute)
 
 ## Installation
@@ -28,92 +31,101 @@ Choose the version corresponding to your Angular version:
 | 10,11,12,13,14,15 | 2.x+        |
 | 6,7,8,9           | 1.x+        |
 
-## Usage
+## Setup
 
-#### 1. Import the `TimeagoModule`:
+ngx-timeago supports both **standalone components** and **NgModule** approaches.
 
-Once installed you need to import the main module into your application module by calling TimeagoModule.forRoot().
-
-Make sure you only call this method in the root module of your application, most of the time called `AppModule`.
-This method allows you to configure the `TimeagoModule` by specifying a formatter, clock and/or an intl service. You should end up with code similar to this:
+### Standalone Components (Recommended)
 
 ```ts
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+// main.ts
+import { provideTimeago } from 'ngx-timeago';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideTimeago()],
+});
+```
+
+```ts
+// component.ts
+import { TimeagoPipe } from 'ngx-timeago';
+
+@Component({
+  standalone: true,
+  imports: [TimeagoPipe],
+  template: `{{ date | timeago }}`,
+})
+export class MyComponent {}
+```
+
+With custom configuration:
+
+```ts
+provideTimeago({
+  formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
+  clock: { provide: TimeagoClock, useClass: MyClock },
+  intl: { provide: TimeagoIntl, useClass: CustomIntl },
+});
+```
+
+### NgModule Approach
+
+```ts
 import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
-  imports: [BrowserModule, TimeagoModule.forRoot()],
-  bootstrap: [AppComponent],
+  imports: [TimeagoModule.forRoot()],
 })
 export class AppModule {}
 ```
 
-##### SharedModule
-
-If you use a [`SharedModule`](https://angular.io/docs/ts/latest/guide/ngmodule.html#!#shared-modules) that you import in multiple other feature modules,
-you can export the `TimeagoModule` to make sure you don't have to import it in every module.
+With custom configuration:
 
 ```ts
-@NgModule({
-  exports: [CommonModule, TimeagoModule],
-})
-export class SharedModule {}
+TimeagoModule.forRoot({
+  formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
+  clock: { provide: TimeagoClock, useClass: MyClock },
+  intl: { provide: TimeagoIntl, useClass: CustomIntl },
+});
 ```
 
-##### Lazy loaded modules
+For lazy loaded modules, use `forChild()` instead of `forRoot()`.
 
-When you lazy load a module, you should use the `forChild` static method to import the `TimeagoModule`.
+## Usage
 
-Since lazy loaded modules use a different injector from the rest of your application, you can configure them separately with a different formatter/clock/intl service.
+### Using the Pipe
 
-```ts
-@NgModule({
-  imports: [
-    TimeagoModule.forChild({
-      formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
-      clock: { provide: TimeagoClock, useClass: CustomClock },
-      intl: { provide: TimeagoIntl, useClass: CustomIntl },
-    }),
-  ],
-})
-export class LazyLoadedModule {}
+```html
+<div>{{ date | timeago }}</div>
+<div>{{ date | timeago: live }}</div>
 ```
 
-##### I18n
+### Using the Directive
+
+```html
+<div timeago [date]="date"></div>
+<div timeago [date]="date" [live]="live"></div>
+```
+
+The `live` parameter controls automatic updates (default: `true`).
+
+## Configuration
+
+### Internationalization (I18n)
 
 By default, there is no intl service available, as the default formatter doesn't provide language support.
-You should provide one, if you end up with a formatter that needs it (either TimeagoCustomFormatter which is provided by the lib or your own). The purpose of the intl service is to contain all the necessary i18n strings used by your formatter.
+You should provide one, if you end up with a formatter that needs it (either `TimeagoCustomFormatter` which is provided by the lib or your own). The purpose of the intl service is to contain all the necessary i18n strings used by your formatter.
 
 ```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import {
-  Timeago,
-  TimeagoIntl,
-  TimeagoFormatter,
-  TimeagoCustomFormatter,
-} from 'ngx-timeago';
-import { AppComponent } from './app';
-
 export class MyIntl extends TimeagoIntl {
-  // do extra stuff here...
+  // Customize strings
 }
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    TimeagoModule.forRoot({
-      intl: { provide: TimeagoIntl, useClass: MyIntl },
-      formatter: {
-        provide: TimeagoFormatter,
-        useClass: TimeagoCustomFormatter,
-      },
-    }),
-  ],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+// Then provide it with TimeagoCustomFormatter
+provideTimeago({
+  intl: { provide: TimeagoIntl, useClass: MyIntl },
+  formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+});
 ```
 
 There is support for a large number of languages out of the box. This support is based on the string objects taken from `jquery-timeago`.
@@ -123,103 +135,69 @@ To use any of the languages provided, you will have to import the language strin
 ```ts
 import { Component } from '@angular/core';
 import { TimeagoIntl } from 'ngx-timeago';
-import { strings as englishStrings } from 'ngx-timeago/language-strings/en.js';
+import { strings as englishStrings } from 'ngx-timeago/language-strings/en';
 
-@Component({
-  selector: 'app',
-  template: ` <div timeago [date]="1553683912689"></div> `,
-})
-export class AppComponent {
-  constructor(intl: TimeagoIntl) {
-    intl.strings = englishStrings;
-    intl.changes.next();
+@Component({...})
+export class MyComponent {
+  constructor(private intl: TimeagoIntl) {
+    this.intl.strings = englishStrings;
+    this.intl.changes.next();
   }
 }
 ```
 
-You can also customize the language strings or provide your own.
+See [available languages](lib/src/language-strings/).
 
-#### 2. Use the pipe or the directive:
+### Custom Formatter
 
-This is how you do it with the **pipe**:
-
-```html
-<div>{{1553683912689 | timeago:live}}</div>
-```
-
-And in your component define live (`true` by default).
-
-This is how you use the **directive**:
-
-```html
-<div timeago [date]="1553683912689" [live]="live"></div>
-```
-
-## API
-
-#### Write your own formatter
-
-If you want to write your own formatter, you need to create a class that implements `TimeagoFormatter`. The only required method is `format` that must return the final `string`.
-
-[Example](lib/src/timeago.formatter.ts)
-
-Once you've defined your formatter, you can provide it in your configuration.
+Implement `TimeagoFormatter` to customize timestamp display:
 
 ```ts
-@NgModule({
-  imports: [
-    BrowserModule,
-    TimeagoModule.forRoot({
-      formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
-    }),
-  ],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+import { TimeagoFormatter } from 'ngx-timeago';
+
+export class CustomFormatter extends TimeagoFormatter {
+  format(then: number): string {
+    const seconds = Math.round(Math.abs(Date.now() - then) / 1000);
+    if (seconds < 60) return 'just now';
+    if (seconds < 3600) return Math.round(seconds / 60) + ' minutes ago';
+    // ... your logic
+  }
+}
 ```
 
-#### Write your own clock
+Then provide it: `{ provide: TimeagoFormatter, useClass: CustomFormatter }`
 
-The only required method to build your own clock, is `tick` that must return an `Observable<any>`. Whenever this observable emits, the timestamp will be updated, using your formatter (and intl, if available).
+[See full example](lib/src/timeago.formatter.ts)
+
+### Custom Clock
+
+Implement `TimeagoClock` to control update intervals:
 
 ```ts
 import { TimeagoClock } from 'ngx-timeago';
-import { Observable, interval } from 'rxjs';
+import { interval } from 'rxjs';
 
-// ticks every 2s
 export class MyClock extends TimeagoClock {
-  tick(then: number): Observable<number> {
-    return interval(2000);
+  tick(then: number) {
+    return interval(2000); // Update every 2 seconds
   }
 }
 ```
 
-Setup the clock in your module import by adding it to the `forRoot` (or `forChild`) configuration.
+Then provide it: `{ provide: TimeagoClock, useClass: MyClock }`
 
-```ts
-@NgModule({
-  imports: [
-    BrowserModule,
-    TimeagoModule.forRoot({
-      clock: { provide: TimeagoClock, useClass: MyClock },
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
+[See full example](lib/src/timeago.clock.ts)
 
 ## Contribute
-
-`ngx-timeago` is packaged with [ng-packagr](https://github.com/dherges/ng-packagr) and then imported into an Angular CLI app.
-To run the demo, do the following steps:
 
 ```bash
 $ pnpm install
 $ pnpm build:lib
-$ pnpm start
+$ pnpm start              # NgModule demo
+$ pnpm start:standalone   # Standalone demo
 ```
+
+Both demos available at `http://localhost:4200`
 
 ---
 

@@ -11,7 +11,7 @@ export interface TimeagoModuleConfig {
 }
 
 @NgModule({
-  declarations: [TimeagoDirective, TimeagoPipe],
+  imports: [TimeagoDirective, TimeagoPipe],
   exports: [TimeagoDirective, TimeagoPipe],
 })
 export class TimeagoModule {

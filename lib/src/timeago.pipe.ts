@@ -18,7 +18,7 @@ import { filter } from 'rxjs/operators';
 @Pipe({
   name: 'timeago',
   pure: false,
-  standalone: false,
+  standalone: true,
 })
 export class TimeagoPipe implements PipeTransform, OnDestroy {
   private intlSubscription: Subscription;

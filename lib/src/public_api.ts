@@ -4,3 +4,4 @@ export * from './timeago.intl';
 export * from './timeago.clock';
 export * from './timeago.formatter';
 export * from './timeago.module';
+export * from './timeago.providers';

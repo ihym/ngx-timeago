@@ -44,6 +44,13 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "standalone": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "browser": "demo/main-standalone.ts"
             }
           },
           "defaultConfiguration": "production"
@@ -56,6 +63,9 @@
             },
             "development": {
               "buildTarget": "ngx-timeago-demo:build:development"
+            },
+            "standalone": {
+              "buildTarget": "ngx-timeago-demo:build:standalone"
             }
           },
           "defaultConfiguration": "development"

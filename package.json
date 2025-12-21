@@ -8,6 +8,7 @@
     "lib:compile:locales": "tsc --project tsconfig.locales.json",
     "ng": "ng",
     "start": "ng serve",
+    "start:standalone": "ng serve --configuration=standalone",
     "test": "ng test",
     "tdd": "ng test --watch",
     "commit": "git-cz",

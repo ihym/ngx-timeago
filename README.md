@@ -2,8 +2,6 @@
 
 Live updating timestamps in Angular.
 
-✨ **Now with full standalone component support!** Use with NgModules or standalone components.
-
 [https://ihym.github.io/ngx-timeago/](https://ihym.github.io/ngx-timeago/)
 
 Get the complete changelog here: https://github.com/ihym/ngx-timeago/releases
